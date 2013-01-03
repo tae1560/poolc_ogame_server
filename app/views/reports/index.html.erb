@@ -1,0 +1,11 @@
+<%= form_tag :action => 'parse', :method => :post do  %>
+    <%= text_area :message, :text %>
+    <%= submit_tag :parse %>
+<% end %>
+<!--
+<% @reports.each do |report| %>
+    <%= report.inspect %>
+    <%= report.report_resources %>
+    <%= link_to 'Destroy', report, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+-->

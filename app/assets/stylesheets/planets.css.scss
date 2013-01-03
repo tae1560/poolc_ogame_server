@@ -1,0 +1,71 @@
+// Place all the styles related to the planets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* CSS Document */
+@charset "utf-8";
+
+div.itsthetable table a:link {color: #CC6633;}
+div.itsthetable table a:visited {color: #CC6633;}
+div.itsthetable table a:hover {color: #999966;}
+div.itsthetable table a:active {color: #CC6633;}
+div.itsthetable table a:focus{color: #CC6633;}
+
+
+div.itsthetable table caption {
+  padding: 18px 2px 15px 2px;
+  color: #cfcfcf;
+  background-color: inherit;
+  font-weight: normal;
+  text-align: centered;
+  text-transform: capitalize;
+}
+
+div.itsthetable table{
+  border: 1px solid #D9D9D9;
+}
+div.itsthetable table tr td{
+  padding: 6px 9px;
+  text-align:center;
+
+}
+div.itsthetable table thead th{
+  background-color: #E5E5D8;
+  border-bottom: 1px solid #ccc;
+  border-left: 1px solid #D9D9D9;
+  font-weight: bold;
+  text-align:center;
+  padding: 16px 9px;
+  color:#592C16;
+}
+div.itsthetable table tbody tr th{
+  background-color: #fff;
+  font-weight: normal;
+  border-left: none;
+  padding: 6px 9px;
+  background-color: #E5E5D8;
+}
+div.itsthetable table tbody td{
+  border-left: 1px solid #D9D9D9;
+}
+div.itsthetable table tbody tr.odd{
+  background-color: #F3F3F3;
+}
+
+div.itsthetable table tbody tr:hover {
+  color: #333333;
+  background-color: #E5E5D8;
+}
+
+div.itsthetable table tbody tr.odd:hover {
+  color: #333333;
+  background-color: #E5E5D8;
+}
+
+div.itsthetable table tfoot td, div.itsthetable table tfoot th{
+  border-top: 1px solid #ccc;
+  font-weight:bold;
+  color:#592C16;
+  padding: 16px 9px;
+
+}

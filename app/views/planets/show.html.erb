@@ -1,0 +1,48 @@
+<div class="itsthetable">
+  행성 정보
+    <ul>
+      <li>아이디 : <%= @planet.user.ogame_id %></li>
+      <li>좌표 : <%= @planet.coordinate %></li>
+    </ul>
+</div>
+
+<div class="itsthetable">
+  함대 정보
+  <table>
+    <thead>
+    <tr>
+      <th>함대 명</th>
+      <th>수량</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @fleet_report.report_fleets.each do |report_fleet| %>
+        <tr>
+          <td><%= report_fleet.fleet.keyword %></td>
+          <td><%= report_fleet.value %>대</td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="itsthetable">
+  방어시설 정보
+  <table>
+    <thead>
+    <tr>
+      <th>함대 명</th>
+      <th>수량</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @defense_report.report_defenses.each do |report_defense| %>
+        <tr>
+          <td><%= report_defense.defense.keyword %></td>
+          <td><%= report_defense.value %>대</td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

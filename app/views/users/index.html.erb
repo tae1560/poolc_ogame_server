@@ -1,0 +1,19 @@
+
+<!--<div>-->
+  <!--<%= @users %>-->
+<!--</div>-->
+
+<div>
+  <%= form_tag :action => 'login_attempt' do %>
+      <ul>
+        <li><span>아이디</span> <%= text_field_tag :ogame_id %></li>
+        <li><span>비밀번호</span> <%= password_field_tag :password %></li>
+        <li id="login_box_buttons">
+          <a href="<%= new_user_path %>"><%= button_tag "Join", :type => "button"%></a>
+          <%= submit_tag "Log In", :class => "left_align" %>
+        </li>
+      </ul>
+  <% end %>
+
+
+</div>

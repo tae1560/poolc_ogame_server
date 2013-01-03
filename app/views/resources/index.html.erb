@@ -1,0 +1,9 @@
+<% @resources.each do |resource| %>
+    <%= resource.inspect %>
+    <%= link_to 'Destroy', resource, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+
+<%= form_for Resource.new do |f| %>
+    <%= f.text_field :keyword %>
+    <%= f.submit %>
+<% end %>

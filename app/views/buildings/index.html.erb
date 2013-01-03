@@ -1,0 +1,12 @@
+<%= form_for Building.new do |f| %>
+    <%= f.text_field :keyword %>
+    <%= f.submit %>
+<% end %>
+<ul>
+  <% @buildings.each do |building| %>
+      <li>
+        <%= building.keyword %>
+        <%= link_to 'Destroy', building, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </li>
+  <% end %>
+</ul>

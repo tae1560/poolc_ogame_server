@@ -1,0 +1,9 @@
+<%= form_for @user do |f| %>
+    <ul>
+      <li>오게임 아이디 : <%= f.text_field :ogame_id %></li>
+      <li>비밀번호 : <%= f.password_field :password %></li>
+      <li>비밀번호 확인 : <%= f.password_field :password_confirmation %></li>
+      </li>
+    </ul>
+    <%= f.submit %>
+<% end %>

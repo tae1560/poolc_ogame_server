@@ -1,0 +1,12 @@
+<%= form_for Fleet.new do |f| %>
+    <%= f.text_field :keyword %>
+    <%= f.submit %>
+<% end %>
+<ul>
+  <% @fleets.each do |fleet| %>
+      <li>
+        <%= fleet.keyword %>
+        <%= link_to 'Destroy', fleet, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </li>
+  <% end %>
+</ul>

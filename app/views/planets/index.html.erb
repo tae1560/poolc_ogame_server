@@ -1,0 +1,60 @@
+<div>
+  <a href="<%=reports_path%>"><button>new message</button></a>
+</div>
+
+<div>
+  <%= form_for "configs", :url => '/planet_config' do |f|%>
+      시작 좌표 : <%= f.text_field :start_planet, :value => @start_planet, :size => 7 %>
+      속도 : <%= f.text_field :speed, :value => @speed, :size => 5 %>
+      <%= f.submit %>
+  <% end %>
+</div>
+
+<div class="itsthetable">
+  <table>
+    <thead>
+    <tr>
+      <th>user_id</th>
+      <th>좌표</th>
+      <th>메탈</th>
+      <th>크리</th>
+      <th>듀테륨</th>
+      <th>에너지</th>
+      <th>필요 카소</th>
+      <th>업데이트 시간</th>
+      <th>약탈</th>
+      <!--<th>약탈기록</th>-->
+      <th>정탐</th>
+      <th>광산레벨</th>
+      <th>함대수</th>
+      <th>방시수</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @planets_information.each do |planet_information| %>
+        <tr>
+          <td><%= planet_information['ogame_id'] %></td>
+          <td><%= planet_information['coordinate'] %></td>
+          <td><%= planet_information['next_metal'] %></td>
+          <td><%= planet_information['next_crystal'] %></td>
+          <td><%= planet_information['next_deuterium'] %></td>
+          <td><%= planet_information['energy'] %></td>
+          <td><%= planet_information['next_need_small_cargo'] %></td>
+          <td><%= planet_information['elapsed_time'] %> 시간 이전</td>
+          <td><a target="_blank" href="<%=planet_information['attack_address']%>">약탈</a></td>
+          <!--<td>-->
+            <!--<%= form_for planet_information['planet'] do |f|%>-->
+                <!--<%= f.submit :save %>-->
+            <!--<% end %>-->
+          <!--</td>-->
+          <td><a target="_blank" href="<%=planet_information['espionage_address']%>">1기</a>/<a target="_blank" href="<%=planet_information['detail_espionage_address']%>">11기</a></td>
+          <td><%= planet_information['Metal Mine'] %>/<%= planet_information['Crystal Mine'] %>/<%= planet_information['Deuterium Synthesizer'] %></td>
+          <td><a href="<%= planet_path planet_information['planet']%>"><%=  planet_information['number_of_fleets'] %></a></td>
+          <td><%=  planet_information['number_of_defenses'] %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+<!--<%= Report.all.size %>-->

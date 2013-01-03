@@ -1,0 +1,12 @@
+<%= form_for Defense.new do |f| %>
+    <%= f.text_field :keyword %>
+    <%= f.submit %>
+<% end %>
+<ul>
+  <% @defenses.each do |defense| %>
+      <li>
+        <%= defense.keyword %>
+        <%= link_to 'Destroy', defense, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </li>
+  <% end %>
+</ul>
