@@ -113,6 +113,11 @@ class PlanetsController < ApplicationController
   def show
     @planet = Planet.find(params[:id])
 
+    @last_report = @planet.reports.last
+    unless @last_report
+      @last_report = Report.new
+    end
+
     # fleets
     @fleet_report = @planet.reports.where(:include_fleets => true).last
     unless @fleet_report
