@@ -213,6 +213,22 @@ class ReportsController < ApplicationController
   end
 
   def re_parse
+    # report 정리
+    Planet.all do |planet|
+      last_report = planet.reports.order(:time).last
+      fleet_report = planet.reports.where(:include_fleets => true).order(:time).last
+      defense_report = planet.reports.where(:include_defenses => true).order(:time).last
+      research_report = planet.reports.where(:include_researches => true).order(:time).last
+      building_report = planet.reports.where(:include_buildings => true).order(:time).last
+
+      planet.reports.each do |report|
+        if report.id == last_report.id or report.id == fleet_report.id or report.id == defense_report.id or report.id == research_report.id or report.id == building_report.id
+        else
+          report.delete
+        end
+      end
+    end
+
     Report.where("message IS NOT NULL").find_each do |report_ins|
       report = report_ins.report_text
 

@@ -23,7 +23,7 @@ class PlanetsController < ApplicationController
       end
 
       planet_information = {}
-      report = planet.reports.last
+      report = planet.reports.order(:time).last
       planet_information['planet'] = planet
       planet_information['ogame_id'] = planet.user.ogame_id
       planet_information['galaxy'] = planet.galaxy
@@ -44,7 +44,7 @@ class PlanetsController < ApplicationController
       planet_information['elapsed_time'] = ((Time.now - time)/60/60).round
 
       # building
-      building_report = planet.reports.where(:include_buildings => true).last
+      building_report = planet.reports.where(:include_buildings => true).order(:time).last
       unless building_report
         building_report = Report.new
       else
@@ -81,7 +81,7 @@ class PlanetsController < ApplicationController
 
       # fleets
       planet_information['number_of_fleets'] = 0
-      fleet_report = planet.reports.where(:include_fleets => true).last
+      fleet_report = planet.reports.where(:include_fleets => true).order(:time).last
       unless fleet_report
         fleet_report = Report.new
       else
@@ -96,7 +96,7 @@ class PlanetsController < ApplicationController
 
       # defenses
       planet_information['number_of_defenses'] = 0
-      defense_report = planet.reports.where(:include_defenses => true).last
+      defense_report = planet.reports.where(:include_defenses => true).order(:time).last
       unless defense_report
         defense_report = Report.new
       else
@@ -158,14 +158,24 @@ class PlanetsController < ApplicationController
   def show
     @planet = Planet.find(params[:id])
 
-    @last_report = @planet.reports.last
+    @last_report = @planet.reports.order(:time).last
     unless @last_report
       @last_report = Report.new
     end
 
-    @fleet_report = @planet.reports.where(:include_fleets => true).last
-    @defense_report = @planet.reports.where(:include_defenses => true).last
-    @research_report = @planet.reports.where(:include_researches => true).last
+    @fleet_report = @planet.reports.where(:include_fleets => true).order(:time).last
+    @defense_report = @planet.reports.where(:include_defenses => true).order(:time).last
+    @research_report = @planet.reports.where(:include_researches => true).order(:time).last
+    @building_report = @planet.reports.where(:include_buildings => true).order(:time).last
+
+    # report 정리
+    @planet.reports.each do |report|
+      if report.id == @last_report.id or report.id == @fleet_report.id or report.id == @defense_report.id or report.id == @research_report.id or report.id == @building_report.id
+      else
+        report.delete
+      end
+    end
+
     @params = params
   end
 
