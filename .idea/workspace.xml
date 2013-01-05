@@ -21,10 +21,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="planets_controller.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="planets_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/planets_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="160" column="16" selection-start="7569" selection-end="7581" vertical-scroll-proportion="0.0">
+            <state line="167" column="20" selection-start="7822" selection-end="7838" vertical-scroll-proportion="0.5643225">
               <folding />
             </state>
           </provider>
@@ -33,7 +33,7 @@
       <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/planets/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="81" column="21" selection-start="1841" selection-end="1841" vertical-scroll-proportion="-21.958334">
+            <state line="86" column="13" selection-start="1933" selection-end="1933" vertical-scroll-proportion="-13.208333">
               <folding />
             </state>
           </provider>
@@ -60,16 +60,16 @@
       <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/planets/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="59" selection-start="2110" selection-end="2110" vertical-scroll-proportion="-7.6666665">
+            <state line="49" column="20" selection-start="2202" selection-end="2202" vertical-scroll-proportion="-8.291667">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reports_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="reports_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/reports_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="216" column="35" selection-start="6437" selection-end="6437" vertical-scroll-proportion="0.27289048">
+            <state line="216" column="21" selection-start="6423" selection-end="6423" vertical-scroll-proportion="-17.384615">
               <folding />
             </state>
           </provider>
@@ -934,30 +934,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/planets_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/reports_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="160" column="16" selection-start="7569" selection-end="7581" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/planets/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="21" selection-start="1841" selection-end="1841" vertical-scroll-proportion="-21.958334">
+        <state line="216" column="21" selection-start="6423" selection-end="6423" vertical-scroll-proportion="-17.384615">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/planets/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="59" selection-start="2110" selection-end="2110" vertical-scroll-proportion="-7.6666665">
+        <state line="49" column="20" selection-start="2202" selection-end="2202" vertical-scroll-proportion="-8.291667">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/reports_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/planets/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="216" column="35" selection-start="6437" selection-end="6437" vertical-scroll-proportion="0.27289048">
+        <state line="86" column="13" selection-start="1933" selection-end="1933" vertical-scroll-proportion="-13.208333">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/planets_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="167" column="20" selection-start="7822" selection-end="7838" vertical-scroll-proportion="0.5643225">
           <folding />
         </state>
       </provider>

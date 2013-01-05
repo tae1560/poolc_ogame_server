@@ -74,13 +74,25 @@
     </div>
 <% end %>
 
-<% if @params[:debug] %>
-    <div>
-      <% @last_report.report_text %>
-    </div>
-    <div>
-      <% @last_report.message %>
-    </div>
 
-
+<% if @params["debug"] %>
+    <div class="itsthetable">
+      텍스트 정보
+      <table>
+        <thead>
+        <tr>
+          <!--<th>전체 텍스트</th>-->
+          <th>report 부분 텍스트</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @planet.reports.each do |report| %>
+            <tr>
+              <!--<td><%= report.message %></td>-->
+              <td><%= report.report_text %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
 <% end %>
