@@ -237,7 +237,6 @@ class ReportsController < ApplicationController
 
           report_ins.time = Time.parse((Time.now - 14.hours).year.to_s+"-"+matched_string[5]) + 14.hours
           report_ins.planet = planet
-          report_ins.message = message
           report_ins.report_text = report
           report_ins.save
         end
