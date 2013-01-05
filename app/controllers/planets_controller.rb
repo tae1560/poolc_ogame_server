@@ -163,17 +163,9 @@ class PlanetsController < ApplicationController
       @last_report = Report.new
     end
 
-    # fleets
     @fleet_report = @planet.reports.where(:include_fleets => true).last
-    unless @fleet_report
-      @fleet_report = Report.new
-    end
-
-    # defenses
     @defense_report = @planet.reports.where(:include_defenses => true).last
-    unless @defense_report
-      @defense_report = Report.new
-    end
+    @research_report = @planet.reports.where(:include_researches => true).last
 
   end
 

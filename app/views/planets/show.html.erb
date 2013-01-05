@@ -8,8 +8,9 @@
     </ul>
 </div>
 
+<% if @fleet_report %>
 <div class="itsthetable">
-  함대 정보
+  함대 정보 (updated : <%= ((Time.now - @fleet_report.time) / 60 / 60).round(2) %> 시간 전 )
   <table>
     <thead>
     <tr>
@@ -27,10 +28,11 @@
     </tbody>
   </table>
 </div>
+<% end %>
 
-
+<% if @defense_report  %>
 <div class="itsthetable">
-  방어시설 정보
+  방어시설 정보 (updated : <%= ((Time.now - @defense_report.time) / 60 / 60).round(2) %> 시간 전 )
   <table>
     <thead>
     <tr>
@@ -48,3 +50,26 @@
     </tbody>
   </table>
 </div>
+<% end %>
+
+<% if @research_report  %>
+    <div class="itsthetable">
+      방어시설 정보 (updated : <%= ((Time.now - @research_report.time) / 60 / 60).round(2) %> 시간 전 )
+      <table>
+        <thead>
+        <tr>
+          <th>연구 명</th>
+          <th>레벨</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @research_report.report_researches.each do |report_research| %>
+            <tr>
+              <td><%= report_research.research.keyword %></td>
+              <td><%= report_research.value %>대</td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+<% end %>

@@ -184,6 +184,29 @@ class ReportsController < ApplicationController
     end
 
 
+    # researches parsing
+    if report.include? "Research"
+      Research.find_each do |research|
+        matched_string = report.match(/#{research.keyword}(?:\s*)((\d|[.])+)(?:\s*)/)
+        if matched_string
+          value = matched_string[1].gsub(/[.]/,"").to_i
+          if value > 0
+
+            report_research = ReportResearch.where(:report_id => report_ins.id, :research_id => research.id).first
+            unless report_research
+              report_research = ReportResearch.new
+              report_research.report = report_ins
+              report_research.research = research
+            end
+            report_research.value = value
+            report_research.save
+          end
+        end
+      end
+
+      report_ins.include_researches = true
+      report_ins.save
+    end
 
 
   end
