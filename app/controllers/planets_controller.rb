@@ -47,6 +47,8 @@ class PlanetsController < ApplicationController
       building_report = planet.reports.where(:include_buildings => true).last
       unless building_report
         building_report = Report.new
+      else
+        planet_information['building_report'] = building_report
       end
       planet_information['Metal Mine'] = building_report.get_building_value "Metal Mine"
       planet_information['Crystal Mine'] = building_report.get_building_value "Crystal Mine"
@@ -82,6 +84,8 @@ class PlanetsController < ApplicationController
       fleet_report = planet.reports.where(:include_fleets => true).last
       unless fleet_report
         fleet_report = Report.new
+      else
+        planet_information['fleet_report'] = fleet_report
       end
       fleet_report.report_fleets.each do |report_fleet|
         planet_information['number_of_fleets'] += report_fleet.value
@@ -95,6 +99,8 @@ class PlanetsController < ApplicationController
       defense_report = planet.reports.where(:include_defenses => true).last
       unless defense_report
         defense_report = Report.new
+      else
+        planet_information['defense_report'] = defense_report
       end
       defense_report.report_defenses.each do |report_defense|
         unless report_defense.defense.keyword.include? "Missiles"

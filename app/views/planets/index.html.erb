@@ -38,9 +38,26 @@
             <!--<% end %>-->
           <!--</td>-->
           <td><a target="_blank" href="<%=planet_information['espionage_address']%>">1기</a>/<a target="_blank" href="<%=planet_information['detail_espionage_address']%>">11기</a></td>
-          <td><%= planet_information['Metal Mine'] %>/<%= planet_information['Crystal Mine'] %>/<%= planet_information['Deuterium Synthesizer'] %></td>
-          <td><a href="<%= planet_path planet_information['planet']%>"><%=  planet_information['number_of_fleets'] %></a></td>
-          <td><%=  planet_information['number_of_defenses'] %></td>
+
+          <% if planet_information['building_report'] %>
+              <td><%= planet_information['Metal Mine'] %>/<%= planet_information['Crystal Mine'] %>/<%= planet_information['Deuterium Synthesizer'] %></td>
+          <% else %>
+              <td>-</td>
+          <% end %>
+
+          <% if planet_information['fleet_report'] %>
+              <td><a href="<%= planet_path planet_information['planet']%>"><%=  planet_information['number_of_fleets'] %></a></td>
+          <% else %>
+              <td>-</td>
+          <% end %>
+
+
+
+          <% if planet_information['defense_report'] %>
+            <td><%=  planet_information['number_of_defenses'] %></td>
+          <% else %>
+            <td>-</td>
+          <% end %>
         </tr>
     <% end %>
     </tbody>
