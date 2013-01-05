@@ -73,3 +73,14 @@
       </table>
     </div>
 <% end %>
+
+<% if @params[:debug] %>
+    <div>
+      <% @planet.report_text %>
+    </div>
+    <div>
+      <% @planet.message %>
+    </div>
+
+
+<% end %>

@@ -166,7 +166,7 @@ class PlanetsController < ApplicationController
     @fleet_report = @planet.reports.where(:include_fleets => true).last
     @defense_report = @planet.reports.where(:include_defenses => true).last
     @research_report = @planet.reports.where(:include_researches => true).last
-
+    @params = params
   end
 
   def update
