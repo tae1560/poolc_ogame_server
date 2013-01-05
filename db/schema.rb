@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130103163313) do
+ActiveRecord::Schema.define(:version => 20130105124006) do
 
   create_table "attacks", :force => true do |t|
     t.integer  "metal"
@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(:version => 20130103163313) do
     t.boolean  "include_buildings",  :default => false
     t.boolean  "include_fleets",     :default => false
     t.boolean  "include_defenses",   :default => false
+    t.text     "report_text"
   end
 
   create_table "researches", :force => true do |t|

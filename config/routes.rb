@@ -13,6 +13,7 @@ PoolcOgameServer::Application.routes.draw do
   match 'login_attempt' => 'users#login_attempt'
   match 'reports/parse'
   match 're_parse' => 'reports#re_parse'
+  match 're_parse_with_messages' => 'reports#re_parse_with_messages'
   match 'planet_config' => 'planets#planet_config'
 
   # The priority is based upon order of creation:

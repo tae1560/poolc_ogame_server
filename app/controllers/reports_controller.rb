@@ -50,6 +50,7 @@ class ReportsController < ApplicationController
             end
             report_ins.time = Time.parse((Time.now - 14.hours).year.to_s+"-"+matched_string[5]) + 14.hours
             report_ins.message = message
+            report_ins.report_text = report
             report_ins.save
           end
 
@@ -212,24 +213,43 @@ class ReportsController < ApplicationController
   end
 
   def re_parse
+    Report.where("message IS NOT NULL").find_each do |report_ins|
+      report = report_ins.report_text
 
-    if params[:message]
-      message = params[:message][:text]
+      if report
+        # user parsing
+        matched_string = report.match(/\[(\d+):(\d+):(\d+)\](?:\s*)\(Player: ([^)]*)\)(?:\s*)at (\d+-\d+ \d+:\d+:\d+)/)
 
-      # select report
+        if matched_string
+          planet = Planet.where(:galaxy => matched_string[1].to_i, :system => matched_string[2].to_i, :planet_number => matched_string[3].to_i).first
+          unless planet
+            planet = Planet.new(:galaxy => matched_string[1].to_i, :system => matched_string[2].to_i, :planet_number => matched_string[3].to_i)
+          end
 
+          # user matching
+          user = User.where(:ogame_id => matched_string[4]).first
+          unless user
+            user = User.new(:ogame_id => matched_string[4])
+            user.save
+          end
+          planet.user = user
+          planet.save
 
+          report_ins.time = Time.parse((Time.now - 14.hours).year.to_s+"-"+matched_string[5]) + 14.hours
+          report_ins.planet = planet
+          report_ins.message = message
+          report_ins.report_text = report
+          report_ins.save
+        end
 
-      redirect_to planets_path
-
-
-
-      #render :json => matched_string
-
+        parse_all report, report_ins
+      end
     end
 
+    redirect_to planets_path
+  end
 
-
+  def re_parse_with_messages
     Report.where("message IS NOT NULL").find_each do |report_ins|
       message = report_ins.message
 
@@ -265,6 +285,7 @@ class ReportsController < ApplicationController
             report_ins.time = Time.parse((Time.now - 14.hours).year.to_s+"-"+matched_string[5]) + 14.hours
             report_ins.planet = planet
             report_ins.message = message
+            report_ins.report_text = report
             report_ins.save
           end
 

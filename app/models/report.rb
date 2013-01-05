@@ -1,5 +1,5 @@
 class Report < ActiveRecord::Base
-  attr_accessible :time, :message, :include_resources, :include_researches, :include_buildings, :include_fleets, :include_defenses
+  attr_accessible :time, :message, :include_resources, :include_researches, :include_buildings, :include_fleets, :include_defenses, :report_text
 
   belongs_to :planet
 
