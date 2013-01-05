@@ -1,0 +1,12 @@
+<%= form_for Research.new do |f| %>
+    <%= f.text_field :keyword %>
+    <%= f.submit %>
+<% end %>
+<ul>
+  <% @researches.each do |research| %>
+      <li>
+        <%= research.keyword %>
+        <%= link_to 'Destroy', research, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </li>
+  <% end %>
+</ul>

@@ -210,6 +210,73 @@ class ReportsController < ApplicationController
 
 
   end
+
+  def re_parse
+
+    if params[:message]
+      message = params[:message][:text]
+
+      # select report
+
+
+
+      redirect_to planets_path
+
+
+
+      #render :json => matched_string
+
+    end
+
+
+
+    Report.where("message IS NOT NULL").find_each do |report_ins|
+      message = report_ins.message
+
+      # select report
+      start_index_array = message.enum_for(:scan,/Resources\s*on/).map { Regexp.last_match.begin(0) }
+
+      start_index_array.each do |start_index|
+        temp_message = message[start_index..message.length]
+        end_index_array = temp_message.enum_for(:scan,/Attack/).map { Regexp.last_match.begin(0) }
+
+        if end_index_array.size > 0
+
+          report = message[start_index..start_index+end_index_array[0]]
+
+          # user parsing
+          matched_string = report.match(/\[(\d+):(\d+):(\d+)\](?:\s*)\(Player: ([^)]*)\)(?:\s*)at (\d+-\d+ \d+:\d+:\d+)/)
+
+          if matched_string
+            planet = Planet.where(:galaxy => matched_string[1].to_i, :system => matched_string[2].to_i, :planet_number => matched_string[3].to_i).first
+            unless planet
+              planet = Planet.new(:galaxy => matched_string[1].to_i, :system => matched_string[2].to_i, :planet_number => matched_string[3].to_i)
+            end
+
+            # user matching
+            user = User.where(:ogame_id => matched_string[4]).first
+            unless user
+              user = User.new(:ogame_id => matched_string[4])
+              user.save
+            end
+            planet.user = user
+            planet.save
+
+            report_ins.time = Time.parse((Time.now - 14.hours).year.to_s+"-"+matched_string[5]) + 14.hours
+            report_ins.planet = planet
+            report_ins.message = message
+            report_ins.save
+          end
+
+          parse_all report, report_ins
+
+        end
+      end
+
+    end
+
+    redirect_to planets_path
+  end
 end
 
 
