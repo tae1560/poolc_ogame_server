@@ -8,7 +8,8 @@ PoolcOgameServer::Application.routes.draw do
   resources :researches
   resources :resources
 
-  root :to => 'users#index'
+  #root :to => 'users#index'
+  root :to => 'planets#index'
   match 'login_attempt' => 'users#login_attempt'
   match 'reports/parse'
   match 're_parse' => 'reports#re_parse'

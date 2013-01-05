@@ -14,20 +14,10 @@
   <table>
     <thead>
     <tr>
-      <th>user_id</th>
-      <th>좌표</th>
-      <th>메탈</th>
-      <th>크리</th>
-      <th>듀테륨</th>
-      <th>에너지</th>
-      <th>필요 카소</th>
-      <th>업데이트 시간</th>
-      <th>약탈</th>
-      <!--<th>약탈기록</th>-->
-      <th>정탐</th>
-      <th>광산레벨</th>
-      <th>함대수</th>
-      <th>방시수</th>
+      <% menus = ["user_id", "좌표", "메탈", "크리", "듀테륨", "에너지", "필요 카소", "업데이트 시간", "약탈", "정탐", "광산레벨", "함대수", "방시수"] %>
+      <% menus.each do |menu| %>
+          <th><%= link_to menu, planets_path(:arrange_type => menus.index(menu)) %></th>
+      <% end %>
     </tr>
     </thead>
     <tbody>

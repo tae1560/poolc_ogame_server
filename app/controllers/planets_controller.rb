@@ -26,6 +26,9 @@ class PlanetsController < ApplicationController
       report = planet.reports.last
       planet_information['planet'] = planet
       planet_information['ogame_id'] = planet.user.ogame_id
+      planet_information['galaxy'] = planet.galaxy
+      planet_information['system'] = planet.system
+      planet_information['planet_number'] = planet.planet_number
       planet_information['coordinate'] = planet.coordinate
 
       unless report
@@ -106,8 +109,44 @@ class PlanetsController < ApplicationController
     end
 
     # sort
-    @planets_information = @planets_information.sort_by { |k| k['next_need_small_cargo']}
-    @planets_information = @planets_information.reverse
+    if params[:arrange_type]
+      session[:arrange_type] = params[:arrange_type].to_i
+    end
+
+    if session[:arrange_type]
+      if session[:arrange_type] == 0
+        @planets_information = @planets_information.sort_by { |k| k['ogame_id'].downcase}
+      elsif session[:arrange_type] == 1
+        @planets_information = @planets_information.sort_by { |k| k['galaxy'] * 100000 + k['system'] * 100 + k['planet_number']}
+      elsif session[:arrange_type] == 2
+        @planets_information = @planets_information.sort_by { |k| k['next_metal']}
+        @planets_information = @planets_information.reverse
+      elsif session[:arrange_type] == 3
+        @planets_information = @planets_information.sort_by { |k| k['next_crystal']}
+        @planets_information = @planets_information.reverse
+      elsif session[:arrange_type] == 4
+        @planets_information = @planets_information.sort_by { |k| k['next_deuterium']}
+        @planets_information = @planets_information.reverse
+      elsif session[:arrange_type] == 5
+        @planets_information = @planets_information.sort_by { |k| k['energy']}
+        @planets_information = @planets_information.reverse
+      elsif session[:arrange_type] == 6
+        @planets_information = @planets_information.sort_by { |k| k['next_need_small_cargo']}
+        @planets_information = @planets_information.reverse
+      elsif session[:arrange_type] == 7
+        @planets_information = @planets_information.sort_by { |k| k['elapsed_time']}
+      elsif session[:arrange_type] == 8
+      elsif session[:arrange_type] == 9
+      elsif session[:arrange_type] == 10
+      elsif session[:arrange_type] == 11
+        @planets_information = @planets_information.sort_by { |k| k['number_of_fleets']}
+        @planets_information = @planets_information.reverse
+      elsif session[:arrange_type] == 12
+        @planets_information = @planets_information.sort_by { |k| k['number_of_defenses']}
+        @planets_information = @planets_information.reverse
+      elsif session[:arrange_type] == 13
+      end
+    end
   end
 
   def show
