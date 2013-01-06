@@ -41,6 +41,7 @@ class PlanetsController < ApplicationController
       planet_information['system'] = planet.system
       planet_information['planet_number'] = planet.planet_number
       planet_information['coordinate'] = planet.coordinate
+      planet_information['galaxy_address'] = "http://uni1.ogame.us/game/index.php?page=galaxy&no_header=1&galaxy=#{planet.galaxy}&system=#{planet.system}&planet=#{planet.planet_number}"
 
       unless report
         report = Report.new

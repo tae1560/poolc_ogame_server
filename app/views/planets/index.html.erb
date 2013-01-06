@@ -25,7 +25,7 @@
     <% @planets_information.each do |planet_information| %>
         <tr>
           <td><%= planet_information['ogame_id'] %></td>
-          <td><%= planet_information['coordinate'] %></td>
+          <td><a target="_blank" href="<%=planet_information['galaxy_address']%>"><%= planet_information['coordinate'] %></a></td>
           <td><%= planet_information['next_metal'] %></td>
           <td><%= planet_information['next_crystal'] %></td>
           <td><%= planet_information['next_deuterium'] %></td>
