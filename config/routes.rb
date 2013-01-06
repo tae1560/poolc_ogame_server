@@ -7,6 +7,7 @@ PoolcOgameServer::Application.routes.draw do
   resources :defenses
   resources :researches
   resources :resources
+  resources :attacks
 
   root :to => 'users#index'
   #root :to => 'planets#index'

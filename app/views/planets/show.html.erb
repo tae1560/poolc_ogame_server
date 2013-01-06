@@ -1,4 +1,5 @@
 
+<%= link_to "앞으로 가기", planets_path %>
 
 <div class="itsthetable">
   행성 정보
@@ -90,6 +91,7 @@
           <th>크리스탈</th>
           <th>두테륨</th>
           <th>시간</th>
+          <th>삭제</th>
         </tr>
         </thead>
         <tbody>
@@ -101,6 +103,7 @@
               <td><%= attack.crystal %></td>
               <td><%= attack.deuterium %></td>
               <td><%= attack.time.in_time_zone("Seoul") %></td>
+              <td><%= link_to '삭제', attack, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
         <% end %>
         </tbody>
