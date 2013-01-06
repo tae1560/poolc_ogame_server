@@ -1,17 +1,28 @@
+#coding : UTF-8
 class PlanetsController < ApplicationController
   #before_filter :authenticate_user
+  before_filter :authenticate_user
 
   def index
     # current user information
-    unless session[:start_planet]
-      session[:start_planet] = {:galaxy => 1, :system => 52, :position => 11}
+    #unless session[:start_planet]
+    #  session[:start_planet] = {:galaxy => 1, :system => 52, :position => 11}
+    #end
+
+    unless @current_user.planets.size > 0
+      redirect_to edit_user_path(@current_user), :notice => "행성이 하나 이상 있어야 합니다."
+      return
+    end
+
+    unless session[:start_planet_id]
+      session[:start_planet_id] = @current_user.planets.first.id
     end
 
     unless session[:speed]
       session[:speed] = 20000
     end
 
-    @start_planet = session[:start_planet][:galaxy].to_s + ":" + session[:start_planet][:system].to_s + ":" + session[:start_planet][:position].to_s
+    @start_planet =  Planet.find(session[:start_planet_id])
     @speed = session[:speed]
 
     @planets = Planet.all
@@ -55,8 +66,7 @@ class PlanetsController < ApplicationController
       planet_information['Deuterium Synthesizer'] = building_report.get_building_value "Deuterium Synthesizer"
 
       # time
-      # =round((10 + 3500 * sqrt(10 * (2700 + 95 * abs(M8-$AC$1)) / $AF$1))/60/60,2)
-      flight_duration = 10 + 3500 * Math.sqrt(10 * (2700 + 95 * (session[:start_planet][:system]-planet.system).abs) / session[:speed])
+      flight_duration = @start_planet.flight_duration planet, session[:speed]
       arrival_time = Time.now + flight_duration.seconds
       planet_information['arrival_time'] = arrival_time
 
@@ -64,13 +74,21 @@ class PlanetsController < ApplicationController
       #=round(R5+AM5*($B$1-$E$1)/1000)
       # cur + lv * hours / 1000
       metal_per_hour = 30*planet_information['Metal Mine']*(1.1 ** planet_information['Metal Mine'])
-      crystal_per_hour = 30*planet_information['Crystal Mine']*(1.1 ** planet_information['Crystal Mine'])
-      deuterium_per_hour = 30*planet_information['Deuterium Synthesizer']*(1.1 ** planet_information['Deuterium Synthesizer'])
+      crystal_per_hour = 20*planet_information['Crystal Mine']*(1.1 ** planet_information['Crystal Mine'])
+      deuterium_per_hour = 10*planet_information['Deuterium Synthesizer']*(1.1 ** planet_information['Deuterium Synthesizer'])
       predict_time = Time.now - time + flight_duration.seconds
 
       planet_information['next_metal'] = (planet_information['metal'] + metal_per_hour * predict_time/60/60).round
       planet_information['next_crystal'] = (planet_information['crystal'] + crystal_per_hour * predict_time/60/60).round
       planet_information['next_deuterium']  = (planet_information['deuterium'] + deuterium_per_hour * predict_time/60/60).round
+
+      # attacks
+      planet.attacks.where("time > ?", Time.now).each do |attack|
+        planet_information['next_metal'] -= attack.metal
+        planet_information['next_crystal'] -= attack.crystal
+        planet_information['next_deuterium'] -= attack.deuterium
+      end
+
       planet_information['next_need_small_cargo'] = ((planet_information['next_metal'] + planet_information['next_crystal'] + planet_information['next_deuterium']) / 2.0 / 5000).ceil
 
       # links
@@ -180,6 +198,28 @@ class PlanetsController < ApplicationController
   end
 
   def update
+    @attack = Attack.new
+    @attack.target_planet = Planet.find(params[:id])
+    @attack.start_planet = Planet.find(params[:planet][:start_planet])
+    @attack.time = Time.parse(params[:planet][:arrival_time])
+
+    if Attack.where(:target_planet_id => @attack.target_planet.id, :start_planet_id => @attack.start_planet, :time => @attack.time).first
+      @attack = Attack.where(:target_planet_id => @attack.target_planet.id, :start_planet_id => @attack.start_planet, :time => @attack.time).first
+    end
+
+    @attack.metal = params[:resources][:metal].to_i
+    @attack.crystal = params[:resources][:crystal].to_i
+    @attack.deuterium = params[:resources][:deuterium].to_i
+
+
+    if @attack.save
+      redirect_to :back
+    else
+      redirect_to :back
+    end
+    #render :json => params
+    #render :json => @attack
+
     # 공격한 카소 공격 기록 등록
     #@planet = Planet.find(params[:id])
     #report = @planet.reports.last
@@ -201,20 +241,53 @@ class PlanetsController < ApplicationController
   def planet_config
     configs = params[:configs]
 
-    matched_string = configs[:start_planet].match(/(\d+):(\d+):(\d+)/)
+    #render :json => params
+    #return
 
-    if matched_string
-      galaxy = matched_string[1].to_i # 1~9
-      system = matched_string[2].to_i # 1~499
-      position = matched_string[3].to_i # 1~15
+    if params[:user][:planet_id]
+      #galaxy = matched_string[1].to_i # 1~9
+      #system = matched_string[2].to_i # 1~499
+      #position = matched_string[3].to_i # 1~15
 
-      if galaxy.between?(1,9) and system.between?(1,499) and position.between?(1,15)
-        session[:start_planet] = {:galaxy => galaxy, :system => system, :position => position}
-      end
+      session[:start_planet_id] = params[:user][:planet_id]
+      #if galaxy.between?(1,9) and system.between?(1,499) and position.between?(1,15)
+      #  session[:start_planet] = {:galaxy => galaxy, :system => system, :position => position}
+      #end
     end
 
     session[:speed] = configs[:speed].to_i
 
     redirect_to :back
+  end
+
+  def create
+    planet = Planet.where(:galaxy => params[:planet][:galaxy], :system => params[:planet][:system], :planet_number => params[:planet][:planet_number]).first
+    if planet
+      redirect_to :back, :notice => "해당 좌표의 행성이 이미 있습니다"
+      return
+    end
+
+    @planet = Planet.new(params[:planet])
+    user = User.find(params[:user][:id])
+    @planet.user = user
+
+    respond_to do |format|
+      if @planet.save
+        format.html { redirect_to :back, :notice => "created successfully" }
+      else
+        format.html { redirect_to :back, :notice => @planet.errors.full_messages}
+      end
+    end
+  end
+
+  def destroy
+    @planet = Planet.find(params[:id])
+    @planet.reports.destroy_all
+    @planet.destroy
+
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.json { head :no_content }
+    end
   end
 end

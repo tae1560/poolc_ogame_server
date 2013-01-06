@@ -11,13 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130105124006) do
+ActiveRecord::Schema.define(:version => 20130106050730) do
 
   create_table "attacks", :force => true do |t|
     t.integer  "metal"
     t.integer  "crystal"
     t.integer  "deuterium"
-    t.integer  "time"
+    t.datetime "time"
     t.integer  "start_planet_id"
     t.integer  "target_planet_id"
     t.datetime "created_at",       :null => false

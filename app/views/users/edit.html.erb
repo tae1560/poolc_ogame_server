@@ -1,0 +1,31 @@
+<div>
+  <%= @user.ogame_id %> 님 환영합니다.
+  <%= link_to "서비스 바로가기", planets_path %>
+</div>
+<div>
+  행성 리스트
+  <ul>
+  <% @user.planets.each do |planet| %>
+      <li>
+        <%= planet.coordinate %>
+        <%= link_to '삭제', planet, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </li>
+  <% end %>
+  </ul>
+</div>
+<div>
+  행성 추가
+  <%= form_for Planet.new do |f| %>
+    좌표 : <%= f.text_field :galaxy, :size=>3 %><%= f.text_field :system, :size=>3 %><%= f.text_field :planet_number, :size=>3 %>
+      <%= hidden_field :user, :id, :value => @user.id  %>
+      <%= f.submit %>
+  <% end %>
+</div>
+<div>
+  <h3 style="color: red;"><%= notice %></h3>
+</div>
+
+
+
+
+

@@ -75,6 +75,40 @@
 <% end %>
 
 
+<% @planet.attacks.each do |attack| %>
+<% end %>
+
+<% if @planet.attacks.size > 0  %>
+    <div class="itsthetable">
+      공격 기록
+      <table>
+        <thead>
+        <tr>
+          <th>공격자</th>
+          <th>출발좌표</th>
+          <th>메탈</th>
+          <th>크리스탈</th>
+          <th>두테륨</th>
+          <th>시간</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @planet.attacks.each do |attack| %>
+            <tr>
+              <td><%= attack.start_planet.user.ogame_id %></td>
+              <td><%= attack.start_planet.coordinate %></td>
+              <td><%= attack.metal %></td>
+              <td><%= attack.crystal %></td>
+              <td><%= attack.deuterium %></td>
+              <td><%= attack.time.in_time_zone("Seoul") %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+<% end %>
+
+
 <% if @params["debug"] %>
     <div class="itsthetable">
       텍스트 정보

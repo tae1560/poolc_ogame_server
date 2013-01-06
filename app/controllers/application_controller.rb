@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     if session[:user_id] == nil or session[:last_seen] < Time.now - 30.minutes
       session[:last_seen] = Time.now
       session[:user_id] = nil
-      redirect_to :root_path
+      redirect_to users_path
       return false
     else
       # set current user object to @current_user object variable
@@ -22,7 +22,8 @@ class ApplicationController < ActionController::Base
 
   def save_login_state
     if session[:user_id]
-      redirect_to(:controller => 'planets', :action => 'index')
+      #redirect_to(:controller => 'planets', :action => 'index')
+      redirect_to edit_user_url(session[:user_id])
       return false
     else
       return true

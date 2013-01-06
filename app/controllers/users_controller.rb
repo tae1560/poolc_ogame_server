@@ -1,5 +1,8 @@
 # coding: utf-8
 class UsersController < ApplicationController
+  before_filter :save_login_state, :only => [:new, :create, :index]
+  before_filter :authenticate_user, :only => [:show, :edit]
+
   def index
     @users = User.all
   end
@@ -7,8 +10,23 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def edit
+    @user = User.find(params[:id])
+    unless @user.id == session[:user_id]
+      @user = nil
+    end
+  end
+
   def create
-    @user = User.new(params[:user])
+    user = User.new(params[:user])
+    if User.where(:ogame_id => user, :password => nil).first
+      @user = User.where(:ogame_id => user, :password => nil).first
+      @user.password = user.password
+      @user.password_confirmation = user.password_confirmation
+    else
+      @user = user
+    end
+
     @user.encrypt_password
     @user.last_login = Time.now
 
@@ -30,7 +48,8 @@ class UsersController < ApplicationController
     session[:last_seen] = Time.now
     if authorized_user
       session[:user_id] = authorized_user.id
-      redirect_to planets_path
+      #redirect_to planets_path
+      redirect_to edit_user_path(authorized_user)
     else
       flash[:notice] = "Invalid Username or Password"
       session[:user_id] = nil

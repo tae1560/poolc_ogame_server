@@ -3,7 +3,12 @@ class Attack < ActiveRecord::Base
 
   belongs_to :start_planet, :class_name => Planet
   belongs_to :target_planet, :class_name => Planet
-#start_planet_id
-#target_planet_id
+
+  validates :start_planet_id, :presence => true
+  validates :target_planet_id, :presence => true
+  validates :metal, :presence => true
+  validates :crystal, :presence => true
+  validates :deuterium, :presence => true
+  validates :time, :presence => true
 
 end
