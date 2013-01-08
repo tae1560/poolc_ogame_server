@@ -23,7 +23,6 @@
     </tr>
     </thead>
     <tbody>
-    <%= form_for :planets, :action => "test" do |f| %>
     <% @planets_informations.each do |planet_information| %>
         <tr>
           <td><%= planet_information['ogame_id'] %></td>
@@ -36,7 +35,7 @@
           <td><%= planet_information['elapsed_time'] %> 시간 이전</td>
           <td><a target="_blank" href="<%=planet_information['attack_address']%>">약탈</a></td>
           <td>
-            <%= f.fields_for planet_information['planet'] do |f|%>
+            <%= form_for planet_information['planet'] do |f|%>
                 <%= hidden_field :resources, :metal, :value => planet_information['next_metal']/2 %>
                 <%= hidden_field :resources, :crystal, :value => planet_information['next_crystal']/2 %>
                 <%= hidden_field :resources, :deuterium, :value => planet_information['next_deuterium']/2 %>
@@ -68,7 +67,6 @@
           <% end %>
         </tr>
     <% end %>
-    <% end %>
     </tbody>
   </table>
 </div>
@@ -86,7 +84,6 @@
     </tr>
     </thead>
     <tbody>
-    <%= form_for :planets, :action => "test" do |f| %>
         <% @old_planets_informations.each do |planet_information| %>
             <tr>
               <td><%= planet_information['ogame_id'] %></td>
@@ -99,7 +96,7 @@
               <td><%= planet_information['elapsed_time'] %> 시간 이전</td>
               <td><a target="_blank" href="<%=planet_information['attack_address']%>">약탈</a></td>
               <td>
-                <%= f.fields_for planet_information['planet'] do |f|%>
+                <%= form_for planet_information['planet'] do |f|%>
                     <%= hidden_field :resources, :metal, :value => planet_information['next_metal']/2 %>
                     <%= hidden_field :resources, :crystal, :value => planet_information['next_crystal']/2 %>
                     <%= hidden_field :resources, :deuterium, :value => planet_information['next_deuterium']/2 %>
@@ -131,7 +128,6 @@
               <% end %>
             </tr>
         <% end %>
-    <% end %>
     </tbody>
   </table>
 </div>
