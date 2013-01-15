@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130106050730) do
+ActiveRecord::Schema.define(:version => 20130115141508) do
 
   create_table "attacks", :force => true do |t|
     t.integer  "metal"
@@ -23,6 +23,9 @@ ActiveRecord::Schema.define(:version => 20130106050730) do
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end
+
+  add_index "attacks", ["start_planet_id"], :name => "attacks_start_planet_id_fk"
+  add_index "attacks", ["target_planet_id"], :name => "attacks_target_planet_id_fk"
 
   create_table "buildings", :force => true do |t|
     t.string   "keyword"
@@ -58,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20130106050730) do
   end
 
   add_index "planets", ["galaxy", "system", "planet_number"], :name => "index_planets_on_galaxy_and_system_and_planet_number"
+  add_index "planets", ["user_id"], :name => "planets_user_id_fk"
 
   create_table "report_buildings", :force => true do |t|
     t.integer  "value"
@@ -67,6 +71,9 @@ ActiveRecord::Schema.define(:version => 20130106050730) do
     t.datetime "updated_at",  :null => false
   end
 
+  add_index "report_buildings", ["building_id"], :name => "index_report_buildings_on_building_id"
+  add_index "report_buildings", ["report_id"], :name => "index_report_buildings_on_report_id"
+
   create_table "report_defenses", :force => true do |t|
     t.integer  "value"
     t.integer  "report_id"
@@ -74,6 +81,9 @@ ActiveRecord::Schema.define(:version => 20130106050730) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "report_defenses", ["defense_id"], :name => "index_report_defenses_on_defense_id"
+  add_index "report_defenses", ["report_id"], :name => "index_report_defenses_on_report_id"
 
   create_table "report_fleets", :force => true do |t|
     t.integer  "value"
@@ -83,6 +93,9 @@ ActiveRecord::Schema.define(:version => 20130106050730) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "report_fleets", ["fleet_id"], :name => "index_report_fleets_on_fleet_id"
+  add_index "report_fleets", ["report_id"], :name => "index_report_fleets_on_report_id"
+
   create_table "report_researches", :force => true do |t|
     t.integer  "value"
     t.integer  "report_id"
@@ -91,6 +104,9 @@ ActiveRecord::Schema.define(:version => 20130106050730) do
     t.datetime "updated_at",  :null => false
   end
 
+  add_index "report_researches", ["report_id"], :name => "index_report_researches_on_report_id"
+  add_index "report_researches", ["research_id"], :name => "index_report_researches_on_research_id"
+
   create_table "report_resources", :force => true do |t|
     t.integer  "value"
     t.integer  "report_id"
@@ -98,6 +114,9 @@ ActiveRecord::Schema.define(:version => 20130106050730) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  add_index "report_resources", ["report_id"], :name => "index_report_resources_on_report_id"
+  add_index "report_resources", ["resource_id"], :name => "index_report_resources_on_resource_id"
 
   create_table "reports", :force => true do |t|
     t.datetime "time"
@@ -112,6 +131,8 @@ ActiveRecord::Schema.define(:version => 20130106050730) do
     t.boolean  "include_defenses",   :default => false
     t.text     "report_text"
   end
+
+  add_index "reports", ["planet_id"], :name => "index_reports_on_planet_id"
 
   create_table "researches", :force => true do |t|
     t.string   "keyword"
@@ -136,5 +157,27 @@ ActiveRecord::Schema.define(:version => 20130106050730) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_foreign_key "attacks", "planets", :name => "attacks_start_planet_id_fk", :column => "start_planet_id", :dependent => :delete
+  add_foreign_key "attacks", "planets", :name => "attacks_target_planet_id_fk", :column => "target_planet_id", :dependent => :delete
+
+  add_foreign_key "planets", "users", :name => "planets_user_id_fk", :dependent => :delete
+
+  add_foreign_key "report_buildings", "buildings", :name => "report_buildings_building_id_fk", :dependent => :delete
+  add_foreign_key "report_buildings", "reports", :name => "report_buildings_report_id_fk", :dependent => :delete
+
+  add_foreign_key "report_defenses", "defenses", :name => "report_defenses_defense_id_fk", :dependent => :delete
+  add_foreign_key "report_defenses", "reports", :name => "report_defenses_report_id_fk", :dependent => :delete
+
+  add_foreign_key "report_fleets", "fleets", :name => "report_fleets_fleet_id_fk", :dependent => :delete
+  add_foreign_key "report_fleets", "reports", :name => "report_fleets_report_id_fk", :dependent => :delete
+
+  add_foreign_key "report_researches", "reports", :name => "report_researches_report_id_fk", :dependent => :delete
+  add_foreign_key "report_researches", "researches", :name => "report_researches_research_id_fk", :dependent => :delete
+
+  add_foreign_key "report_resources", "reports", :name => "report_resources_report_id_fk", :dependent => :delete
+  add_foreign_key "report_resources", "resources", :name => "report_resources_resource_id_fk", :dependent => :delete
+
+  add_foreign_key "reports", "planets", :name => "reports_planet_id_fk", :dependent => :delete
 
 end
