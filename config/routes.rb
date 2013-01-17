@@ -1,6 +1,10 @@
 PoolcOgameServer::Application.routes.draw do
   resources :users
-  resources :planets
+  resources :planets do
+    collection do
+      put 'update_multiple'
+    end
+  end
   resources :reports
   resources :buildings
   resources :fleets

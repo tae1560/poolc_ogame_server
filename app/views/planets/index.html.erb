@@ -23,53 +23,66 @@
     </tr>
     </thead>
     <tbody>
-    <% @planets_informations.each do |planet_information| %>
-        <tr>
-          <td><%= planet_information['ogame_id'] %></td>
-          <td><a target="_blank" href="<%=planet_information['galaxy_address']%>"><%= planet_information['coordinate'] %></a></td>
-          <td><%= planet_information['next_metal'] %></td>
-          <td><%= planet_information['next_crystal'] %></td>
-          <td><%= planet_information['next_deuterium'] %></td>
-          <td><%= planet_information['energy'] %></td>
-          <td><%= planet_information['next_need_small_cargo'] %></td>
-          <td><%= planet_information['elapsed_time'] %> 시간 이전</td>
-          <td><a target="_blank" href="<%=planet_information['attack_address']%>">약탈</a></td>
-          <td>
-            <%= form_for planet_information['planet'] do |f|%>
-                <%= hidden_field :resources, :metal, :value => planet_information['next_metal']/2 %>
-                <%= hidden_field :resources, :crystal, :value => planet_information['next_crystal']/2 %>
-                <%= hidden_field :resources, :deuterium, :value => planet_information['next_deuterium']/2 %>
-                <%= hidden_field :planet, :start_planet, :value => @start_planet.id %>
-                <%= hidden_field :planet, :arrival_time, :value => planet_information['arrival_time'] %>
-                <%= f.submit :save %>
-            <% end %>
-          </td>
-          <td><a target="_blank" href="<%=planet_information['espionage_address']%>">1기</a>/<a target="_blank" href="<%=planet_information['detail_espionage_address']%>">11기</a></td>
+    <%= form_for :planets, :url => update_multiple_planets_path, :html => { :method => :put } do |f|%>
+        <% @planets_informations.each do |planet_information| %>
+            <tr>
+              <td><%= planet_information['ogame_id'] %></td>
+              <td><a target="_blank" href="<%=planet_information['galaxy_address']%>"><%= planet_information['coordinate'] %></a></td>
+              <td><%= planet_information['next_metal'] %></td>
+              <td><%= planet_information['next_crystal'] %></td>
+              <td><%= planet_information['next_deuterium'] %></td>
+              <td><%= planet_information['energy'] %></td>
+              <td><%= planet_information['next_need_small_cargo'] %></td>
+              <td><%= planet_information['elapsed_time'] %> 시간 이전</td>
+              <td><a target="_blank" href="<%=planet_information['attack_address']%>" onclick="$(planets_<%=h planet_information['planet'].id %>_check)[0].checked = true">약탈</a></td>
+              <td>
+                <%= f.fields_for planet_information['planet'].id.to_s do |ff| %>
+                    <%= ff.check_box :check %>
+                    <%= ff.fields_for :resources do |fff| %>
+                        <%= fff.hidden_field :metal, :value => planet_information['next_metal']/2 %>
+                        <%= fff.hidden_field :crystal, :value => planet_information['next_crystal']/2 %>
+                        <%= fff.hidden_field :deuterium, :value => planet_information['next_deuterium']/2 %>
+                    <% end %>
 
-          <% if planet_information['building_report'] %>
-              <td><%= planet_information['Metal Mine'] %>/<%= planet_information['Crystal Mine'] %>/<%= planet_information['Deuterium Synthesizer'] %></td>
-          <% else %>
-              <td>-</td>
-          <% end %>
+                    <%= ff.fields_for :planets do |fff| %>
+                        <%= fff.hidden_field :start_planet, :value => @start_planet.id %>
+                        <%= fff.hidden_field :arrival_time, :value => planet_information['arrival_time'] %>
+                    <% end %>
 
-          <% if planet_information['fleet_report'] %>
-              <td><a href="<%= planet_path planet_information['planet']%>"><%=  planet_information['number_of_fleets'] %></a></td>
-          <% else %>
-              <td>-</td>
-          <% end %>
+                    <%= ff.submit :save %>
+                <% end %>
+              </td>
+              <td><a target="_blank" href="<%=planet_information['espionage_address']%>">1기</a>/<a target="_blank" href="<%=planet_information['detail_espionage_address']%>">11기</a></td>
+
+              <% if planet_information['building_report'] %>
+                  <td><%= planet_information['Metal Mine'] %>/<%= planet_information['Crystal Mine'] %>/<%= planet_information['Deuterium Synthesizer'] %></td>
+              <% else %>
+                  <td>-</td>
+              <% end %>
+
+              <% if planet_information['fleet_report'] %>
+                  <td><a target="_blank" href="<%= planet_path planet_information['planet']%>"><%=  planet_information['number_of_fleets'] %></a></td>
+              <% else %>
+                  <td>-</td>
+              <% end %>
 
 
 
-          <% if planet_information['defense_report'] %>
-            <td><%=  planet_information['number_of_defenses'] %></td>
-          <% else %>
-            <td>-</td>
-          <% end %>
-        </tr>
+              <% if planet_information['defense_report'] %>
+                  <td><%=  planet_information['number_of_defenses'] %></td>
+              <% else %>
+                  <td>-</td>
+              <% end %>
+            </tr>
+        <% end %>
     <% end %>
     </tbody>
   </table>
 </div>
+
+
+
+
 
 
 <h2>오래된 기록들</h2>
@@ -84,6 +97,7 @@
     </tr>
     </thead>
     <tbody>
+     <%= form_for :planets, :url => update_multiple_planets_path, :html => { :method => :put } do |f|%>
         <% @old_planets_informations.each do |planet_information| %>
             <tr>
               <td><%= planet_information['ogame_id'] %></td>
@@ -94,15 +108,22 @@
               <td><%= planet_information['energy'] %></td>
               <td><%= planet_information['next_need_small_cargo'] %></td>
               <td><%= planet_information['elapsed_time'] %> 시간 이전</td>
-              <td><a target="_blank" href="<%=planet_information['attack_address']%>">약탈</a></td>
+              <td><a target="_blank" href="<%=planet_information['attack_address']%>" onclick="$(planets_<%=h planet_information['planet'].id %>_check)[0].checked = true">약탈</a></td>
               <td>
-                <%= form_for planet_information['planet'] do |f|%>
-                    <%= hidden_field :resources, :metal, :value => planet_information['next_metal']/2 %>
-                    <%= hidden_field :resources, :crystal, :value => planet_information['next_crystal']/2 %>
-                    <%= hidden_field :resources, :deuterium, :value => planet_information['next_deuterium']/2 %>
-                    <%= hidden_field :planet, :start_planet, :value => @start_planet.id %>
-                    <%= hidden_field :planet, :arrival_time, :value => planet_information['arrival_time'] %>
-                    <%= f.submit :save %>
+                <%= f.fields_for planet_information['planet'].id.to_s do |ff| %>
+                    <%= ff.check_box :check %>
+                    <%= ff.fields_for :resources do |fff| %>
+                        <%= fff.hidden_field :metal, :value => planet_information['next_metal']/2 %>
+                        <%= fff.hidden_field :crystal, :value => planet_information['next_crystal']/2 %>
+                        <%= fff.hidden_field :deuterium, :value => planet_information['next_deuterium']/2 %>
+                    <% end %>
+
+                    <%= ff.fields_for :planets do |fff| %>
+                        <%= fff.hidden_field :start_planet, :value => @start_planet.id %>
+                        <%= fff.hidden_field :arrival_time, :value => planet_information['arrival_time'] %>
+                    <% end %>
+
+                    <%= ff.submit :save %>
                 <% end %>
               </td>
               <td><a target="_blank" href="<%=planet_information['espionage_address']%>">1기</a>/<a target="_blank" href="<%=planet_information['detail_espionage_address']%>">11기</a></td>
@@ -114,7 +135,7 @@
               <% end %>
 
               <% if planet_information['fleet_report'] %>
-                  <td><a href="<%= planet_path planet_information['planet']%>"><%=  planet_information['number_of_fleets'] %></a></td>
+                  <td><a target="_blank" href="<%= planet_path planet_information['planet']%>"><%=  planet_information['number_of_fleets'] %></a></td>
               <% else %>
                   <td>-</td>
               <% end %>
@@ -128,6 +149,7 @@
               <% end %>
             </tr>
         <% end %>
+     <% end %>
     </tbody>
   </table>
 </div>

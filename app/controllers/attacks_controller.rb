@@ -1,4 +1,6 @@
 class AttacksController < ApplicationController
+  before_filter :authenticate_user
+
   def destroy
     @attack = Attack.find(params[:id])
     @attack.destroy

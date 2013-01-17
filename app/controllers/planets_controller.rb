@@ -261,6 +261,28 @@ class PlanetsController < ApplicationController
     #redirect_to :back
   end
 
+  def update_multiple
+    params[:planets].each do |k,v|
+      if v[:check] == "1"
+        @attack = Attack.new
+        @attack.target_planet = Planet.find(k)
+        @attack.start_planet = Planet.find(v[:planets][:start_planet])
+        @attack.time = Time.parse(v[:planets][:arrival_time])
+
+        if Attack.where(:target_planet_id => @attack.target_planet.id, :start_planet_id => @attack.start_planet, :time => @attack.time).first
+          @attack = Attack.where(:target_planet_id => @attack.target_planet.id, :start_planet_id => @attack.start_planet, :time => @attack.time).first
+        end
+
+        @attack.metal = v[:resources][:metal].to_i
+        @attack.crystal = v[:resources][:crystal].to_i
+        @attack.deuterium = v[:resources][:deuterium].to_i
+        @attack.save
+      end
+    end
+
+    redirect_to :back
+  end
+
   def planet_config
     configs = params[:configs]
 
