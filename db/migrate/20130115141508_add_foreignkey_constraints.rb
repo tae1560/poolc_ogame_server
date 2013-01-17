@@ -26,10 +26,22 @@ class AddForeignkeyConstraints < ActiveRecord::Migration
     add_foreign_key :report_researches, :reports, :dependent => :delete
     add_foreign_key :report_researches, :researches, :dependent => :delete
 
+    ReportFleet.find_each do |report_fleet|
+      unless report_fleet.report
+        report_fleet.delete
+      end
+    end
+
     add_index :report_fleets, :report_id
     add_index :report_fleets, :fleet_id
     add_foreign_key :report_fleets, :reports, :dependent => :delete
     add_foreign_key :report_fleets, :fleets, :dependent => :delete
+
+    ReportDefense.find_each do |report_defense|
+      unless report_defense.report
+        report_defense.delete
+      end
+    end
 
     add_index :report_defenses, :report_id
     add_index :report_defenses, :defense_id
