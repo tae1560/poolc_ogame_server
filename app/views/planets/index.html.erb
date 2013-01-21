@@ -12,6 +12,7 @@
 </div>
 
 
+<h2>inactive users</h2>
 <div class="itsthetable">
   <table>
     <thead>
@@ -26,7 +27,7 @@
     <%= form_for :planets, :url => update_multiple_planets_path, :html => { :method => :put } do |f|%>
         <% @planets_informations.each do |planet_information| %>
             <tr>
-              <td><%= planet_information['ogame_id'] %></td>
+              <td><a target="_blank" href="<%=edit_user_path(planet_information['user'].id)%>"> <%= planet_information['ogame_id'] %></a></td>
               <td><a target="_blank" href="<%=planet_information['galaxy_address']%>"><%= planet_information['coordinate'] %></a></td>
               <td><%= planet_information['next_metal'] %></td>
               <td><%= planet_information['next_crystal'] %></td>
@@ -85,7 +86,7 @@
 
 
 
-<h2>오래된 기록들</h2>
+<h2>active users</h2>
 <div class="itsthetable">
   <table>
     <thead>
@@ -98,9 +99,9 @@
     </thead>
     <tbody>
      <%= form_for :planets, :url => update_multiple_planets_path, :html => { :method => :put } do |f|%>
-        <% @old_planets_informations.each do |planet_information| %>
+        <% @active_planets_informations.each do |planet_information| %>
             <tr>
-              <td><%= planet_information['ogame_id'] %></td>
+              <td><a target="_blank" href="<%=edit_user_path(planet_information['user'].id)%>"> <%= planet_information['ogame_id'] %></a></td>
               <td><a target="_blank" href="<%=planet_information['galaxy_address']%>"><%= planet_information['coordinate'] %></a></td>
               <td><%= planet_information['next_metal'] %></td>
               <td><%= planet_information['next_crystal'] %></td>

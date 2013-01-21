@@ -1,11 +1,24 @@
+#coding : UTF-8
 class User < ActiveRecord::Base
-  attr_accessible :ogame_id, :password, :password_confirmation, :last_login
+  attr_accessible :ogame_id, :password, :password_confirmation, :last_login, :status
 
   validates_confirmation_of :password
   validates :ogame_id, :presence => true, :uniqueness => true
 
   has_many :planets
   accepts_nested_attributes_for :planets
+
+  def all_status
+    {"i" => "부재", "hp" => "명예", "v" => "휴가", "n" => "초보자", "A" => "관리자",  "b" => "정지"}
+  end
+
+  def is_status status
+    if self.status
+      return self.status.include? status
+    else
+      return false
+    end
+  end
 
   def encrypt_password
     if self.password.present?

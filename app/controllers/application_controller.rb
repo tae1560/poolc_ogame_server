@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
       session[:last_seen] = Time.now
     end
 
-    if session[:user_id] == nil or session[:last_seen] < Time.now - 30.minutes
+    if session[:user_id] == nil or session[:last_seen] < Time.now - 2.hours
       session[:last_seen] = Time.now
       session[:user_id] = nil
       redirect_to users_path

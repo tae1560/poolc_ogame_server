@@ -28,7 +28,7 @@ class PlanetsController < ApplicationController
     @planets = Planet.all
 
     @planets_informations = []
-    @old_planets_informations = []
+    @active_planets_informations = []
     @planets.each do |planet|
       if planet.reports.size == 0
         next
@@ -36,6 +36,7 @@ class PlanetsController < ApplicationController
 
       planet_information = {}
       report = planet.reports.order(:time).last
+      planet_information['user'] = planet.user
       planet_information['planet'] = planet
       planet_information['ogame_id'] = planet.user.ogame_id
       planet_information['galaxy'] = planet.galaxy
@@ -130,10 +131,11 @@ class PlanetsController < ApplicationController
 
       # filtering
       #if planet_information['energy'] != "-" and planet_information['energy'] > 3000
-      if planet_information['elapsed_time'] < 36
+      #if planet_information['elapsed_time'] < 36
+      if planet.user.is_status "i"
         @planets_informations.push planet_information
       else
-        @old_planets_informations.push planet_information
+        @active_planets_informations.push planet_information
       end
       #end
     end
@@ -146,51 +148,51 @@ class PlanetsController < ApplicationController
     if session[:arrange_type]
       if session[:arrange_type] == 0
         @planets_informations.sort_by! { |k| k['ogame_id'].downcase}
-        @old_planets_informations.sort_by! { |k| k['ogame_id'].downcase}
+        @active_planets_informations.sort_by! { |k| k['ogame_id'].downcase}
       elsif session[:arrange_type] == 1
         @planets_informations.sort_by! { |k| k['galaxy'] * 100000 + k['system'] * 100 + k['planet_number']}
-        @old_planets_informations.sort_by! { |k| k['galaxy'] * 100000 + k['system'] * 100 + k['planet_number']}
+        @active_planets_informations.sort_by! { |k| k['galaxy'] * 100000 + k['system'] * 100 + k['planet_number']}
       elsif session[:arrange_type] == 2
         @planets_informations.sort_by! { |k| k['next_metal']}
         @planets_informations.reverse!
-        @old_planets_informations.sort_by! { |k| k['next_metal']}
-        @old_planets_informations.reverse!
+        @active_planets_informations.sort_by! { |k| k['next_metal']}
+        @active_planets_informations.reverse!
       elsif session[:arrange_type] == 3
         @planets_informations.sort_by! { |k| k['next_crystal']}
         @planets_informations.reverse!
-        @old_planets_informations.sort_by! { |k| k['next_crystal']}
-        @old_planets_informations.reverse!
+        @active_planets_informations.sort_by! { |k| k['next_crystal']}
+        @active_planets_informations.reverse!
       elsif session[:arrange_type] == 4
         @planets_informations.sort_by! { |k| k['next_deuterium']}
         @planets_informations.reverse!
-        @old_planets_informations.sort_by! { |k| k['next_deuterium']}
-        @old_planets_informations.reverse!
+        @active_planets_informations.sort_by! { |k| k['next_deuterium']}
+        @active_planets_informations.reverse!
       elsif session[:arrange_type] == 5
         @planets_informations.sort_by! { |k| k['energy']}
         @planets_informations.reverse!
-        @old_planets_informations.sort_by! { |k| k['energy']}
-        @old_planets_informations.reverse!
+        @active_planets_informations.sort_by! { |k| k['energy']}
+        @active_planets_informations.reverse!
       elsif session[:arrange_type] == 6
         @planets_informations.sort_by! { |k| k['next_need_small_cargo']}
         @planets_informations.reverse!
-        @old_planets_informations.sort_by! { |k| k['next_need_small_cargo']}
-        @old_planets_informations.reverse!
+        @active_planets_informations.sort_by! { |k| k['next_need_small_cargo']}
+        @active_planets_informations.reverse!
       elsif session[:arrange_type] == 7
         @planets_informations.sort_by! { |k| k['elapsed_time']}
-        @old_planets_informations.sort_by! { |k| k['elapsed_time']}
+        @active_planets_informations.sort_by! { |k| k['elapsed_time']}
       elsif session[:arrange_type] == 8
       elsif session[:arrange_type] == 9
       elsif session[:arrange_type] == 10
       elsif session[:arrange_type] == 11
         @planets_informations.sort_by! { |k| k['number_of_fleets']}
         @planets_informations.reverse!
-        @old_planets_informations.sort_by! { |k| k['number_of_fleets']}
-        @old_planets_informations.reverse!
+        @active_planets_informations.sort_by! { |k| k['number_of_fleets']}
+        @active_planets_informations.reverse!
       elsif session[:arrange_type] == 12
         @planets_informations.sort_by! { |k| k['number_of_defenses']}
         @planets_informations.reverse!
-        @old_planets_informations.sort_by! { |k| k['number_of_defenses']}
-        @old_planets_informations.reverse!
+        @active_planets_informations.sort_by! { |k| k['number_of_defenses']}
+        @active_planets_informations.reverse!
       elsif session[:arrange_type] == 13
       end
     end

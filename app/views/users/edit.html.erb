@@ -1,11 +1,13 @@
+<% if @is_me %>
+    <% if @current_user %>
 <div>
-  <%= @user.ogame_id %> 님 환영합니다.
+  <%= @current_user.ogame_id %> 님 환영합니다.
   <%= link_to "서비스 바로가기", planets_path %>
 </div>
 <div>
   행성 리스트
   <ul>
-  <% @user.planets.each do |planet| %>
+  <% @current_user.planets.each do |planet| %>
       <li>
         <%= planet.coordinate %>
         <%= link_to '삭제', planet, method: :delete, data: { confirm: 'Are you sure?' } %>
@@ -17,15 +19,45 @@
   행성 추가
   <%= form_for Planet.new do |f| %>
     좌표 : <%= f.text_field :galaxy, :size=>3 %><%= f.text_field :system, :size=>3 %><%= f.text_field :planet_number, :size=>3 %>
-      <%= hidden_field :user, :id, :value => @user.id  %>
+      <%= hidden_field :user, :id, :value => @current_user.id  %>
       <%= f.submit %>
   <% end %>
 </div>
 <div>
   <h3 style="color: red;"><%= notice %></h3>
 </div>
+    <% end %>
+<% else %>
+    <div>
+      <%= link_to "서비스 바로가기", planets_path %>
+    </div>
+
+    <div>
+      아이디 : <%= @user.ogame_id %> <%= link_to '삭제', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% @user.planets.each do |planet| %>
+          <li>
+            <%= planet.coordinate %>
+            <%= link_to '삭제', planet, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </li>
+      <% end %>
+    </div>
 
 
+    <div>
+      <h3>상태 업데이트</h3>
+      <%= form_for @user do |f| %>
+          <ul>
 
+            <% @user.all_status.each do |k,v| %>
+                <li>
+                  <%= check_box :status, k, :checked => @user.is_status(k) %> <%=h k %> <%=h v %>
+                </li>
 
+            <% end %>
+          </ul>
+          <%= f.submit %>
+      <% end %>
+    </div>
+
+<% end %>
 

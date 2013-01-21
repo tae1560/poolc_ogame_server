@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130115141508) do
+ActiveRecord::Schema.define(:version => 20130121010133) do
 
   create_table "attacks", :force => true do |t|
     t.integer  "metal"
@@ -154,8 +154,9 @@ ActiveRecord::Schema.define(:version => 20130115141508) do
     t.string   "ogame_id"
     t.string   "password"
     t.datetime "last_login"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.string   "status",     :default => ""
   end
 
   add_foreign_key "attacks", "planets", :name => "attacks_start_planet_id_fk", :column => "start_planet_id", :dependent => :delete

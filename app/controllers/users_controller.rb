@@ -12,8 +12,8 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    unless @user.id == session[:user_id]
-      @user = nil
+    if @user.id == session[:user_id]
+      @is_me = true
     end
   end
 
@@ -43,6 +43,23 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    @user = User.find(params[:id])
+
+    status = ""
+    params[:status].each do |k, v|
+      if v == "1"
+        status += k + ","
+      end
+    end
+
+    @user.status = status
+    @user.save
+
+    redirect_to :back
+    #render :json => @user
+  end
+
   def login_attempt
     authorized_user = User.authenticate(params[:ogame_id],params[:password])
     session[:last_seen] = Time.now
@@ -54,6 +71,16 @@ class UsersController < ApplicationController
       flash[:notice] = "Invalid Username or Password"
       session[:user_id] = nil
       redirect_to :back
+    end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+
+    respond_to do |format|
+      format.html { redirect_to :planets }
+      format.json { head :no_content }
     end
   end
 
