@@ -62,6 +62,30 @@ div.itsthetable table tbody tr.odd:hover {
   background-color: #E5E5D8;
 }
 
+div.itsthetable table tbody tr.vacation_user{
+  background-color: #03eaff;
+}
+div.itsthetable table tbody tr.vacation_user:hover {
+  color: #333333;
+  background-color: #E5E5D8;
+}
+
+div.itsthetable table tbody tr.honorable_user{
+  background-color: #f6ff03;
+}
+div.itsthetable table tbody tr.honorable_user:hover {
+  color: #333333;
+  background-color: #E5E5D8;
+}
+
+div.itsthetable table tbody tr.weak_user{
+  background-color: #44ff03;
+}
+div.itsthetable table tbody tr.weak_user:hover {
+  color: #333333;
+  background-color: #E5E5D8;
+}
+
 div.itsthetable table tfoot td, div.itsthetable table tfoot th{
   border-top: 1px solid #ccc;
   font-weight:bold;
