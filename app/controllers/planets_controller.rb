@@ -199,7 +199,7 @@ class PlanetsController < ApplicationController
 
     # report 정리
     @planet.reports.each do |report|
-      if report.id == @last_report.id or report.id == @fleet_report.id or report.id == @defense_report.id or report.id == @research_report.id or report.id == @building_report.id
+      if report.id == @last_report.id or (@fleet_report and report.id == @fleet_report.id) or (@defense_report and report.id == @defense_report.id) or (@research_report and report.id == @research_report.id) or (@building_report and report.id == @building_report.id)
       else
         report.delete
       end
