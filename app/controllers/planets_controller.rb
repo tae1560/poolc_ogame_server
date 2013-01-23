@@ -28,7 +28,7 @@ class PlanetsController < ApplicationController
     @planets = Planet.all
 
 
-    @planets_informations = {"inactive users" => [], "active users" => []}
+    @planets_informations = {"inactive users" => [], "active users" => [], "protected users" => []}
 
     @planets.each do |planet|
       if planet.reports.size == 0
@@ -135,9 +135,12 @@ class PlanetsController < ApplicationController
       #if planet_information['elapsed_time'] < 36
       if planet.user.is_status "i"
         @planets_informations["inactive users"].push planet_information
+      elsif planet.user.is_status "b" or planet.user.is_status "v" or planet.user.is_status "A" or planet.user.is_status "n"
+        @planets_informations["protected users"].push planet_information
       else
         @planets_informations["active users"].push planet_information
       end
+
       #end
     end
 

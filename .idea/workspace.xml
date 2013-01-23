@@ -52,7 +52,7 @@
       <file leaf-file-name="planets_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/planets_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="201" column="232" selection-start="8709" selection-end="8709" vertical-scroll-proportion="0.74614066">
+            <state line="138" column="46" selection-start="6426" selection-end="6426" vertical-scroll-proportion="0.38593483">
               <folding />
             </state>
           </provider>
@@ -843,7 +843,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/planets_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="201" column="232" selection-start="8709" selection-end="8709" vertical-scroll-proportion="0.74614066">
+        <state line="138" column="46" selection-start="6426" selection-end="6426" vertical-scroll-proportion="0.38593483">
           <folding />
         </state>
       </provider>
