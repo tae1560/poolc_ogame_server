@@ -50,7 +50,12 @@
                   <td><%= planet_information['energy'] %></td>
                   <td><%= planet_information['next_need_small_cargo'] %></td>
                   <td><%= planet_information['elapsed_time'] %> 시간 이전</td>
-                  <td><a target="_blank" href="<%=planet_information['attack_address']%>" onclick="$(planets_<%=h planet_information['planet'].id %>_check)[0].checked = true">약탈</a></td>
+                    <% if (planet_information['defense_report'] and planet_information['number_of_defenses'] > 0) or (planet_information['fleet_report'] and planet_information['number_of_fleets'] > 0) %>
+                    <td><a target="_blank" href="<%=planet_information['attack_address']%>" onclick="$(planets_<%=h planet_information['planet'].id %>_check)[0].checked = true" data-confirm='진짜 공격하시겠습니까? (방어병력 있음)'>약탈</a></td>
+                    <% else %>
+                    <td><a target="_blank" href="<%=planet_information['attack_address']%>" onclick="$(planets_<%=h planet_information['planet'].id %>_check)[0].checked = true">약탈</a></td>
+                    <% end %>
+
                   <td>
                     <%= f.fields_for planet_information['planet'].id.to_s do |ff| %>
                         <%= ff.check_box :check %>

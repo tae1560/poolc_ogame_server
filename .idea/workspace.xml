@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="269f6b32-255c-41c5-8a54-4ca0aee98b89" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/planets_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/planets_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/planets/index.html.erb" afterPath="$PROJECT_DIR$/app/views/planets/index.html.erb" />
     </list>
     <ignored path="poolc_ogame_server.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,10 +31,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="index.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/planets/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="40" selection-start="1447" selection-end="1456" vertical-scroll-proportion="0.0">
+            <state line="52" column="20" selection-start="2536" selection-end="2536" vertical-scroll-proportion="0.6779964">
               <folding />
             </state>
           </provider>
@@ -49,10 +49,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="planets_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="planets_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/planets_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="138" column="46" selection-start="6426" selection-end="6426" vertical-scroll-proportion="0.38593483">
+            <state line="139" column="10" selection-start="6463" selection-end="6463" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -61,8 +61,41 @@
       <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/planets/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="6" selection-start="195" selection-end="195" vertical-scroll-proportion="-3.75">
-              <folding />
+            <state line="9" column="6" selection-start="195" selection-end="195" vertical-scroll-proportion="0.0">
+              <folding>
+                <marker date="1357462088000" expanded="true" signature="64:194" placeholder="..." />
+                <marker date="1357462088000" expanded="true" signature="81:187" placeholder="..." />
+                <marker date="1357462088000" expanded="true" signature="244:666" placeholder="..." />
+                <marker date="1357462088000" expanded="true" signature="340:659" placeholder="..." />
+                <marker date="1357462088000" expanded="true" signature="352:422" placeholder="..." />
+                <marker date="1357462088000" expanded="true" signature="361:409" placeholder="..." />
+                <marker date="1357462088000" expanded="true" signature="434:648" placeholder="..." />
+                <marker date="1357462088000" expanded="true" signature="508:621" placeholder="..." />
+                <marker date="1357462088000" expanded="true" signature="729:1167" placeholder="..." />
+                <marker date="1357462088000" expanded="true" signature="829:1160" placeholder="..." />
+                <marker date="1357462088000" expanded="true" signature="841:911" placeholder="..." />
+                <marker date="1357462088000" expanded="true" signature="850:898" placeholder="..." />
+                <marker date="1357462088000" expanded="true" signature="923:1149" placeholder="..." />
+                <marker date="1357462088000" expanded="true" signature="1003:1122" placeholder="..." />
+                <marker date="1357462088000" expanded="true" signature="1235:1752" placeholder="..." />
+                <marker date="1357462088000" expanded="true" signature="1344:1741" placeholder="..." />
+                <marker date="1357462088000" expanded="true" signature="1360:1450" placeholder="..." />
+                <marker date="1357462088000" expanded="true" signature="1373:1433" placeholder="..." />
+                <marker date="1357462088000" expanded="true" signature="1466:1726" placeholder="..." />
+                <marker date="1357462088000" expanded="true" signature="1558:1691" placeholder="..." />
+                <marker date="1357462088000" expanded="true" signature="1879:2712" placeholder="..." />
+                <marker date="1357462088000" expanded="true" signature="1905:2701" placeholder="..." />
+                <marker date="1357462088000" expanded="true" signature="1921:2125" placeholder="..." />
+                <marker date="1357462088000" expanded="true" signature="1934:2108" placeholder="..." />
+                <marker date="1357462088000" expanded="true" signature="2141:2686" placeholder="..." />
+                <marker date="1357462088000" expanded="true" signature="2205:2651" placeholder="..." />
+                <marker date="1357462088000" expanded="true" signature="2780:3193" placeholder="..." />
+                <marker date="1357462088000" expanded="true" signature="2807:3182" placeholder="..." />
+                <marker date="1357462088000" expanded="true" signature="2823:2933" placeholder="..." />
+                <marker date="1357462088000" expanded="true" signature="2836:2916" placeholder="..." />
+                <marker date="1357462088000" expanded="true" signature="2949:3167" placeholder="..." />
+                <marker date="1357462088000" expanded="true" signature="3013:3132" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -120,9 +153,9 @@
         <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/user.rb" />
         <option value="$PROJECT_DIR$/app/views/users/edit.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/planets/index.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/planets.css.scss" />
         <option value="$PROJECT_DIR$/app/controllers/planets_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/planets/index.html.erb" />
       </list>
     </option>
   </component>
@@ -158,7 +191,6 @@
     </navigator>
     <panes>
       <pane id="RailsProjectView" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -413,6 +445,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -666,6 +699,24 @@
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="DETECT_NESTED_COPIES" value="true" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="269f6b32-255c-41c5-8a54-4ca0aee98b89" name="Default" comment="" />
@@ -683,7 +734,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3121212" sideWeight="0.6713178" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32272726" sideWeight="0.6713178" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
@@ -820,13 +871,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/planets/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="40" selection-start="1447" selection-end="1456" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/planets.css.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state line="65" column="28" selection-start="1534" selection-end="1534" vertical-scroll-proportion="0.0">
@@ -836,14 +880,54 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/planets/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="6" selection-start="195" selection-end="195" vertical-scroll-proportion="-3.75">
-          <folding />
+        <state line="9" column="6" selection-start="195" selection-end="195" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1357462088000" expanded="true" signature="64:194" placeholder="..." />
+            <marker date="1357462088000" expanded="true" signature="81:187" placeholder="..." />
+            <marker date="1357462088000" expanded="true" signature="244:666" placeholder="..." />
+            <marker date="1357462088000" expanded="true" signature="340:659" placeholder="..." />
+            <marker date="1357462088000" expanded="true" signature="352:422" placeholder="..." />
+            <marker date="1357462088000" expanded="true" signature="361:409" placeholder="..." />
+            <marker date="1357462088000" expanded="true" signature="434:648" placeholder="..." />
+            <marker date="1357462088000" expanded="true" signature="508:621" placeholder="..." />
+            <marker date="1357462088000" expanded="true" signature="729:1167" placeholder="..." />
+            <marker date="1357462088000" expanded="true" signature="829:1160" placeholder="..." />
+            <marker date="1357462088000" expanded="true" signature="841:911" placeholder="..." />
+            <marker date="1357462088000" expanded="true" signature="850:898" placeholder="..." />
+            <marker date="1357462088000" expanded="true" signature="923:1149" placeholder="..." />
+            <marker date="1357462088000" expanded="true" signature="1003:1122" placeholder="..." />
+            <marker date="1357462088000" expanded="true" signature="1235:1752" placeholder="..." />
+            <marker date="1357462088000" expanded="true" signature="1344:1741" placeholder="..." />
+            <marker date="1357462088000" expanded="true" signature="1360:1450" placeholder="..." />
+            <marker date="1357462088000" expanded="true" signature="1373:1433" placeholder="..." />
+            <marker date="1357462088000" expanded="true" signature="1466:1726" placeholder="..." />
+            <marker date="1357462088000" expanded="true" signature="1558:1691" placeholder="..." />
+            <marker date="1357462088000" expanded="true" signature="1879:2712" placeholder="..." />
+            <marker date="1357462088000" expanded="true" signature="1905:2701" placeholder="..." />
+            <marker date="1357462088000" expanded="true" signature="1921:2125" placeholder="..." />
+            <marker date="1357462088000" expanded="true" signature="1934:2108" placeholder="..." />
+            <marker date="1357462088000" expanded="true" signature="2141:2686" placeholder="..." />
+            <marker date="1357462088000" expanded="true" signature="2205:2651" placeholder="..." />
+            <marker date="1357462088000" expanded="true" signature="2780:3193" placeholder="..." />
+            <marker date="1357462088000" expanded="true" signature="2807:3182" placeholder="..." />
+            <marker date="1357462088000" expanded="true" signature="2823:2933" placeholder="..." />
+            <marker date="1357462088000" expanded="true" signature="2836:2916" placeholder="..." />
+            <marker date="1357462088000" expanded="true" signature="2949:3167" placeholder="..." />
+            <marker date="1357462088000" expanded="true" signature="3013:3132" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/planets_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="138" column="46" selection-start="6426" selection-end="6426" vertical-scroll-proportion="0.38593483">
+        <state line="139" column="10" selection-start="6463" selection-end="6463" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/planets/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="20" selection-start="2536" selection-end="2536" vertical-scroll-proportion="0.6779964">
           <folding />
         </state>
       </provider>
