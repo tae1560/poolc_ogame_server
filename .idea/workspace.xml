@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="269f6b32-255c-41c5-8a54-4ca0aee98b89" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/planets/show.html.erb" afterPath="$PROJECT_DIR$/app/views/planets/show.html.erb" />
     </list>
     <ignored path="poolc_ogame_server.iws" />
@@ -61,7 +60,7 @@
       <file leaf-file-name="show.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/planets/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="97" column="9" selection-start="2345" selection-end="2345" vertical-scroll-proportion="0.71153843">
+            <state line="90" column="46" selection-start="2188" selection-end="2188" vertical-scroll-proportion="0.52797204">
               <folding />
             </state>
           </provider>
@@ -861,7 +860,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/planets/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="9" selection-start="2345" selection-end="2345" vertical-scroll-proportion="0.71153843">
+        <state line="90" column="46" selection-start="2188" selection-end="2188" vertical-scroll-proportion="0.52797204">
           <folding />
         </state>
       </provider>

@@ -88,7 +88,7 @@
         <tbody>
         <% @building_report.report_buildings.each do |report_building| %>
             <tr>
-              <td><%= report_building.research.keyword %></td>
+              <td><%= report_building.building.keyword %></td>
               <td><%= report_building.value %></td>
             </tr>
         <% end %>
