@@ -75,8 +75,26 @@
     </div>
 <% end %>
 
-
-<% @planet.attacks.each do |attack| %>
+<% if @building_report  %>
+    <div class="itsthetable">
+      건물 정보 (updated : <%= ((Time.now - @building_report.time) / 60 / 60).round(2) %> 시간 전 )
+      <table>
+        <thead>
+        <tr>
+          <th>건물 명</th>
+          <th>레벨</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @building_report.report_buildings.each do |report_building| %>
+            <tr>
+              <td><%= report_building.research.keyword %></td>
+              <td><%= report_building.value %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
 <% end %>
 
 <% if @planet.attacks.size > 0  %>
