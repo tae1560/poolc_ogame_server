@@ -3,9 +3,11 @@
     <%= submit_tag :parse %>
 <% end %>
 <!--
-<% @reports.each do |report| %>
-    <%= report.inspect %>
-    <%= report.report_resources %>
-    <%= link_to 'Destroy', report, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% if params[:debug] %>
+    <% @reports.each do |report| %>
+        <%= report.inspect %>
+        <%= report.report_resources %>
+        <%= link_to 'Destroy', report, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
 <% end %>
 -->
