@@ -2,7 +2,7 @@
     <%= text_area :message, :text %>
     <%= submit_tag :parse %>
 <% end %>
-<!--
+
 <% if params[:debug] %>
     <% @reports.each do |report| %>
         <%= report.inspect %>
@@ -10,4 +10,3 @@
         <%= link_to 'Destroy', report, method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
 <% end %>
--->
