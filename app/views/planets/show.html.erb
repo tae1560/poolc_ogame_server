@@ -2,7 +2,8 @@
 <%= link_to "앞으로 가기", planets_path %>
 
 <div class="itsthetable">
-  행성 정보
+  <div class="space"></div>
+  <h3 class="title">행성 정보</h3>
     <ul>
       <li>아이디 : <%= @planet.user.ogame_id %></li>
       <li>좌표 : <%= @planet.coordinate %></li>
@@ -11,7 +12,8 @@
 
 <% if @fleet_report %>
 <div class="itsthetable">
-  함대 정보 (updated : <%= ((Time.now - @fleet_report.time) / 60 / 60).round(2) %> 시간 전 )
+  <div class="space"></div>
+  <h3 class="title">함대 정보 (updated : <%= ((Time.now - @fleet_report.time) / 60 / 60).round(2) %> 시간 전 )</h3>
   <table>
     <thead>
     <tr>
@@ -33,7 +35,8 @@
 
 <% if @defense_report  %>
 <div class="itsthetable">
-  방어시설 정보 (updated : <%= ((Time.now - @defense_report.time) / 60 / 60).round(2) %> 시간 전 )
+  <div class="space"></div>
+  <h3 class="title">방어시설 정보 (updated : <%= ((Time.now - @defense_report.time) / 60 / 60).round(2) %> 시간 전 )</h3>
   <table>
     <thead>
     <tr>
@@ -55,7 +58,8 @@
 
 <% if @research_report  %>
     <div class="itsthetable">
-      연구레벨 정보 (updated : <%= ((Time.now - @research_report.time) / 60 / 60).round(2) %> 시간 전 )
+      <div class="space"></div>
+      <h3 class="title">연구레벨 정보 (updated : <%= ((Time.now - @research_report.time) / 60 / 60).round(2) %> 시간 전 )</h3>
       <table>
         <thead>
         <tr>
@@ -77,7 +81,8 @@
 
 <% if @building_report  %>
     <div class="itsthetable">
-      건물 정보 (updated : <%= ((Time.now - @building_report.time) / 60 / 60).round(2) %> 시간 전 )
+      <div class="space"></div>
+      <h3 class="title">건물 정보 (updated : <%= ((Time.now - @building_report.time) / 60 / 60).round(2) %> 시간 전 )</h3>
       <table>
         <thead>
         <tr>
@@ -99,6 +104,7 @@
 
 <% if @planet.attacks.size > 0  %>
     <div class="itsthetable">
+      <div class="space"></div>
       공격 기록
       <table>
         <thead>
@@ -129,24 +135,20 @@
     </div>
 <% end %>
 
-
-<% if @params["debug"] %>
+<% if @planet.reports.last %>
     <div class="itsthetable">
-      텍스트 정보
+      <div class="space"></div>
+      <h3 class="title">websim 용 텍스트 정보 (websim 페이지의 파싱 부분에 넣는다.) <%= link_to "바로가기", "http://websim.speedsim.net/", :target=>:blank %></h3>
       <table>
         <thead>
         <tr>
-          <!--<th>전체 텍스트</th>-->
           <th>report 부분 텍스트</th>
         </tr>
         </thead>
         <tbody>
-        <% @planet.reports.each do |report| %>
-            <tr>
-              <!--<td><%= report.message %></td>-->
-              <td><%= report.report_text %></td>
-            </tr>
-        <% end %>
+        <tr>
+          <td><%= @planet.reports.last.report_text.gsub("Armor", "Armour") %></td>
+        </tr>
         </tbody>
       </table>
     </div>
