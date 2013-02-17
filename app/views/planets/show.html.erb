@@ -154,7 +154,7 @@
         </tr>
         </thead>
         <tbody>
-        <% @planet.reports.each do |report| %>
+        <% @planet.reports.order("time DESC").each do |report| %>
             <tr>
               <td><%= report.report_text.gsub("Armor", "Armour") %></td>
             </tr>
