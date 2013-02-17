@@ -27,7 +27,9 @@
         <tbody>
         <%= form_for :planets, :url => update_multiple_planets_path, :html => { :method => :put } do |f|%>
             <% array.each do |planet_information| %>
-                <% if planet_information['user'].is_status "i" %>
+                <% if planet_information['is_attacking'] %>
+                    <tr class="attacking_user">
+                <% elsif planet_information['user'].is_status "i" %>
                     <tr class="inactive_user">
                 <% elsif planet_information['user'].is_status "hp" %>
                     <tr class="honorable_user">

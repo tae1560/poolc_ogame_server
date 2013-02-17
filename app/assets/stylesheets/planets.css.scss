@@ -88,6 +88,14 @@ div.itsthetable table tbody tr.weak_user:hover {
   background-color: #E5E5D8;
 }
 
+div.itsthetable table tbody tr.attacking_user{
+  background-color: #ff0000;
+}
+div.itsthetable table tbody tr.attacking_user:hover {
+  color: #333333;
+  background-color: #E5E5D8;
+}
+
 div.itsthetable table tfoot td, div.itsthetable table tfoot th{
   border-top: 1px solid #ccc;
   font-weight:bold;

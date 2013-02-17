@@ -88,6 +88,7 @@ class PlanetsController < ApplicationController
 
       # attacks
       planet.attacks.where("time > ?", Time.now).each do |attack|
+        planet_information['is_attacking'] = true
         planet_information['next_metal'] -= attack.metal
         planet_information['next_crystal'] -= attack.crystal
         planet_information['next_deuterium'] -= attack.deuterium
