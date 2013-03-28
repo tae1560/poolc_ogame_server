@@ -98,11 +98,10 @@ class PlanetsController < ApplicationController
 
       # links
       planet_information['attack_address'] = "http://uni1.ogame.us/game/index.php?page=fleet1&galaxy=#{planet.galaxy}&system=#{planet.system}&position=#{planet.planet_number}&type=1&mission=1&am202=#{planet_information['next_need_small_cargo']}"
-      #planet_information['espionage_address'] = "http://uni1.ogame.us/game/index.php?page=fleet1&galaxy=#{planet.galaxy}&system=#{planet.system}&position=#{planet.planet_number}&type=1&mission=6&am210=1"
-      #planet_information['detail_espionage_address'] = "http://uni1.ogame.us/game/index.php?page=fleet1&galaxy=#{planet.galaxy}&system=#{planet.system}&position=#{planet.planet_number}&type=1&mission=6&am210=11"
-
-      planet_information['espionage_address'] = "http://uni1.ogame.us/game/index.php?page=minifleet&ajax=1&mission=6&galaxy=#{planet.galaxy}&system=#{planet.system}&position=#{planet.planet_number}&type=1&shipCount=1"
-      planet_information['detail_espionage_address'] = "http://uni1.ogame.us/game/index.php?page=minifleet&ajax=1&mission=6&galaxy=#{planet.galaxy}&system=#{planet.system}&position=#{planet.planet_number}&type=1&shipCount=11"
+      planet_information['espionage_address'] = "http://uni1.ogame.us/game/index.php?page=fleet1&galaxy=#{planet.galaxy}&system=#{planet.system}&position=#{planet.planet_number}&type=1&mission=6&am210=1"
+      planet_information['detail_espionage_address'] = "http://uni1.ogame.us/game/index.php?page=fleet1&galaxy=#{planet.galaxy}&system=#{planet.system}&position=#{planet.planet_number}&type=1&mission=6&am210=11"
+      planet_information['mini_espionage_address'] = "http://uni1.ogame.us/game/index.php?page=minifleet&ajax=1&mission=6&galaxy=#{planet.galaxy}&system=#{planet.system}&position=#{planet.planet_number}&type=1&shipCount=1"
+      #planet_information['detail_espionage_address'] = "http://uni1.ogame.us/game/index.php?page=minifleet&ajax=1&mission=6&galaxy=#{planet.galaxy}&system=#{planet.system}&position=#{planet.planet_number}&type=1&shipCount=11"
 
       # fleets
       planet_information['number_of_fleets'] = 0
