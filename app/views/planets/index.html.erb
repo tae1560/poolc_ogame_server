@@ -1,5 +1,10 @@
+
 <div>
   <a href="<%=reports_path%>"><button>new message</button></a>
+</div>
+
+<div class="result">
+result
 </div>
 
 <div>
@@ -75,7 +80,8 @@
                         <%= ff.submit :save %>
                     <% end %>
                   </td>
-                  <td><a target="_blank" href="<%=planet_information['espionage_address']%>">1기</a>/<a target="_blank" href="<%=planet_information['detail_espionage_address']%>">11기</a>/<a target="_blank" href="<%=planet_information['mini_espionage_address']%>">quick</a></td>
+
+                  <td><a target="_blank" href="<%=planet_information['espionage_address']%>">1기</a>/<a target="_blank" href="<%=planet_information['detail_espionage_address']%>">11기</a>/<a target="_blank"  href="<%=planet_information['mini_espionage_address']%>">quick</a></td>
 
                   <% if planet_information['building_report'] %>
                       <td><%= planet_information['Metal Mine'] %>/<%= planet_information['Crystal Mine'] %>/<%= planet_information['Deuterium Synthesizer'] %></td>

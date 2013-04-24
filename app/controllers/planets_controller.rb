@@ -100,7 +100,8 @@ class PlanetsController < ApplicationController
       planet_information['attack_address'] = "http://uni1.ogame.us/game/index.php?page=fleet1&galaxy=#{planet.galaxy}&system=#{planet.system}&position=#{planet.planet_number}&type=1&mission=1&am202=#{planet_information['next_need_small_cargo']}"
       planet_information['espionage_address'] = "http://uni1.ogame.us/game/index.php?page=fleet1&galaxy=#{planet.galaxy}&system=#{planet.system}&position=#{planet.planet_number}&type=1&mission=6&am210=1"
       planet_information['detail_espionage_address'] = "http://uni1.ogame.us/game/index.php?page=fleet1&galaxy=#{planet.galaxy}&system=#{planet.system}&position=#{planet.planet_number}&type=1&mission=6&am210=11"
-      planet_information['mini_espionage_address'] = "http://uni1.ogame.us/game/index.php?page=minifleet&ajax=1&mission=6&galaxy=#{planet.galaxy}&system=#{planet.system}&position=#{planet.planet_number}&type=1&shipCount=1"
+      #planet_information['mini_espionage_address'] = "http://uni1.ogame.us/game/index.php?page=minifleet&ajax=1&mission=6&galaxy=#{planet.galaxy}&system=#{planet.system}&position=#{planet.planet_number}&type=1&shipCount=1"
+      planet_information['mini_espionage_address'] = "send_epionage.html?galaxy=#{planet_information['galaxy']}&system=#{planet_information['system']}&position=#{planet_information['planet_number']}"
       #planet_information['detail_espionage_address'] = "http://uni1.ogame.us/game/index.php?page=minifleet&ajax=1&mission=6&galaxy=#{planet.galaxy}&system=#{planet.system}&position=#{planet.planet_number}&type=1&shipCount=11"
 
       # fleets
@@ -327,5 +328,9 @@ class PlanetsController < ApplicationController
       format.html { render :json => "Success" }
       format.json { head :no_content }
     end
+  end
+
+  def send_epionage
+
   end
 end

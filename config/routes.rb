@@ -20,6 +20,7 @@ PoolcOgameServer::Application.routes.draw do
   match 're_parse' => 'reports#re_parse'
   match 're_parse_with_messages' => 'reports#re_parse_with_messages'
   match 'planet_config' => 'planets#planet_config'
+  match 'send_epionage' => 'planets#send_epionage'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
