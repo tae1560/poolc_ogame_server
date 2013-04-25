@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="269f6b32-255c-41c5-8a54-4ca0aee98b89" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/planets_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/planets_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/planets/index.html.erb" afterPath="$PROJECT_DIR$/app/views/planets/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/index.html.erb" afterPath="$PROJECT_DIR$/app/views/users/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
     </list>
     <ignored path="poolc_ogame_server.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,10 +22,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="index.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/planets/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="83" column="205" selection-start="4543" selection-end="4543" vertical-scroll-proportion="-12.083333">
+            <state line="84" column="41" selection-start="4380" selection-end="4380" vertical-scroll-proportion="0.27184466">
               <folding />
             </state>
           </provider>
@@ -38,7 +34,7 @@
       <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/reports/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="9" selection-start="380" selection-end="380" vertical-scroll-proportion="0.0">
+            <state line="4" column="0" selection-start="133" selection-end="133" vertical-scroll-proportion="-2.5">
               <folding />
             </state>
           </provider>
@@ -62,10 +58,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="send_epionage.html.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="send_epionage.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/planets/send_epionage.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="8" selection-start="95" selection-end="117" vertical-scroll-proportion="0.028409092">
+            <state line="7" column="32" selection-start="290" selection-end="290" vertical-scroll-proportion="-4.375">
               <folding />
             </state>
           </provider>
@@ -142,9 +138,9 @@
         <option value="$PROJECT_DIR$/app/views/planets/show.html.erb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/views/users/index.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/planets/index.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/planets_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/planets/send_epionage.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/planets/index.html.erb" />
       </list>
     </option>
   </component>
@@ -828,23 +824,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/reports/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="9" selection-start="380" selection-end="380" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="36" selection-start="632" selection-end="645" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/planets/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="205" selection-start="4543" selection-end="4543" vertical-scroll-proportion="-12.083333">
           <folding />
         </state>
       </provider>
@@ -865,7 +847,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/planets/send_epionage.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="8" selection-start="95" selection-end="117" vertical-scroll-proportion="0.028409092">
+        <state line="7" column="32" selection-start="290" selection-end="290" vertical-scroll-proportion="-4.375">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/reports/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="133" selection-end="133" vertical-scroll-proportion="-2.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/planets/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="84" column="41" selection-start="4380" selection-end="4380" vertical-scroll-proportion="0.27184466">
           <folding />
         </state>
       </provider>
