@@ -103,7 +103,7 @@
       <file leaf-file-name="unicorn_init.sh" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/unicorn_init.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="25" selection-start="1081" selection-end="1122" vertical-scroll-proportion="1.489547">
+            <state line="16" column="0" selection-start="386" selection-end="386" vertical-scroll-proportion="0.41811848">
               <folding />
             </state>
           </provider>
@@ -848,7 +848,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/unicorn_init.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="25" selection-start="1081" selection-end="1122" vertical-scroll-proportion="1.489547">
+        <state line="16" column="0" selection-start="386" selection-end="386" vertical-scroll-proportion="0.41811848">
           <folding />
         </state>
       </provider>
