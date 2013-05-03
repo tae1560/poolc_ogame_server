@@ -1,4 +1,4 @@
-<form action="http://uni1.ogame.us/game/index.php?page=minifleet&ajax=1" method="post"
+<form id="go" action="http://uni1.ogame.us/game/index.php?page=minifleet&ajax=1" method="post"
 onload="$('#token_text').focus">
 
   <input type="hidden" name="mission" value="6" />
@@ -18,3 +18,111 @@ onload="$('#token_text').focus">
   <input type="submit" value="정찰보내기"/>
 
 </form>
+
+
+<script>
+//    // Accepts a url and a callback function to run.
+//    function requestCrossDomain( site, callback ) {
+//
+//        // If no url was passed, exit.
+//        if ( !site ) {
+//            alert('No site was passed.');
+//            return false;
+//        }
+//
+//        // Take the provided url, and add it to a YQL query. Make sure you encode it!
+//        var yql = 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent('select * from html where url="' + site + '"') + '&format=xml&callback=cbFunc';
+//
+//        // Request that YSQL string, and run a callback function.
+//        // Pass a defined function to prevent cache-busting.
+//        $.getJSON( yql, cbFunc );
+//
+//        function cbFunc(data) {
+//            // If we have something to work with...
+//            if ( data.results[0] ) {
+//                // Strip out all script tags, for security reasons.
+//                // BE VERY CAREFUL. This helps, but we should do more.
+//                data = data.results[0].replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '');
+//
+//                // If the user passed a callback, and it
+//                // is a function, call it, and send through the data var.
+//                if ( typeof callback === 'function') {
+//                    callback(data);
+//                }
+//            }
+//            // Else, Maybe we requested a site that doesn't exist, and nothing returned.
+//            else throw new Error('Nothing returned from getJSON.');
+//        }
+//    }
+//
+//    alert("start");
+//    requestCrossDomain('https://api.twitter.com/1.1/statuses/user_timeline.json', function(results) {
+//        $('#container').html(results);
+//    });
+
+
+//    temp_data = null;
+//    $.ajax({
+//        url : "http://uni1.ogame.us/game/index.php?page=minifleet&ajax=1",
+//        data : "mission=6&galaxy=<%=params['galaxy']%>&system=<%=params['system']%>&position=<%=params['position']%>&type=1&shipCount=11&token=",
+//        dataType : "jsonp",
+//        jsonp : "callback",
+//        success: function(data) {
+//            if(data != null)    {
+//                alert(data.result + ", " +  data.go);
+//            } else {
+//                alert("data is null")
+//            }
+//        },
+//        fail: function(data) {
+//            alert(data + " fail nn");
+//        },
+//        always: function(data) {
+//            alert(data + " always nn");
+//        },
+//        error: function(data) {
+//            alert(data.to_s() + " error nn");
+//            temp_data = data;
+//        }
+//    });
+
+//  $.getJSON("http://ip:8080/jsp/upload?id=user&callback=?",
+//          function(data) {
+//              alert(data.result + ", " +  data.go);
+//          }
+//  );
+//    alert("script started")
+</script>
+
+<script>
+
+    $(function() {
+        var page = document.location.href.replace(/#.*$/, '#same-origin-policy-example');
+//        $('#page').val(page);
+        $('#go').submit(function() {
+            try {
+                alert("test");
+//                $('#sop').contents()[0].location.replace($('#page').val());
+            } catch (err) {
+                alert(err);
+            }
+            return false;
+        });
+//        $('#child').click(function() {
+//            try {
+//                $('#sop').contents().find('body').toggleClass('highlight');
+//            } catch (err) {
+//                alert(err);
+//            }
+//        });
+//        $('#parent').click(function() {
+//            $(top.document.body).toggleClass('highlight');
+//        });
+    })
+
+</script>
+
+<div id="container">result</div>
+
+<iframe id="sop" style="width:80%;height:60%;margin:auto;display:block">
+</iframe>
